@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+<div id="container">
+  <ion-card>
+  <ion-item>
+  <ion-icon name="person-outline"></ion-icon>
+  <ion-input placeholder="User"></ion-input>
+</ion-item><br>
+
+
+<ion-item>
+  <ion-icon name="lock-closed-outline"></ion-icon>
+  <ion-input placeholder="Password" type="password"></ion-input>
+</ion-item><br>
+
+<ion-button expand="block"> <a [routerLink]="['/']" routerLinkActive="router-link-active">send</a></ion-button>
+</ion-card>
+</div>
+</ion-content>

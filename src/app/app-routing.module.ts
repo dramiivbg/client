@@ -15,6 +15,16 @@ const routes: Routes = [
     path: 'habitaciones',
     loadChildren: () => import('./habitaciones/habitaciones.module').then( m => m.HabitacionesPageModule)
   },
+
+  {
+    path: 'login',
+    loadChildren: () => import('./home/login/login-routing.module').then( m => m.LoginPageRoutingModule)
+  },
+  
+  {
+    path: 'calificacion',
+    loadChildren: () => import('./habitaciones/calificar/calificar-routing.module').then( m => m.CalificarPageRoutingModule)
+  },
 ];
 
 @NgModule({

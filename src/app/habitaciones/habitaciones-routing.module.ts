@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: HabitacionesPage
+  },
+  {
+    path: 'calificar',
+    loadChildren: () => import('./calificar/calificar.module').then( m => m.CalificarPageModule)
   }
 ];
 

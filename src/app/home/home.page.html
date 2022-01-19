@@ -14,7 +14,7 @@
     
   </ion-header>
 
-  <ion-card>
+  <ion-card style="text-align: center;">
     <ion-card-header>
     
       <ion-card-title>Card Title</ion-card-title>
@@ -22,11 +22,15 @@
   
     <ion-card-content>
 
-      <ion-img   src="C:\Users\Usuario\Downloads\1642532350511.jpg" alt="habitacion"><a [routerLink]="['/habitaciones']" routerLinkActive="router-link-active"></a> </ion-img>
+      <ion-img  style="padding-left: 100px;"   src="C:\Users\Usuario\Downloads\1642532350511.jpg" alt="habitacion"><a [routerLink]="['/habitaciones']" routerLinkActive="router-link-active"></a> </ion-img>
       
+
     </ion-card-content>
+  
+    <a  [routerLink]="['/login']" routerLinkActive="router-link-active">login</a> 
   </ion-card>
   
-
+    
+  
 
 </ion-content>
