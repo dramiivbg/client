@@ -25,6 +25,14 @@ const routes: Routes = [
     path: 'calificacion',
     loadChildren: () => import('./habitaciones/calificar/calificar-routing.module').then( m => m.CalificarPageRoutingModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./administrador/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'crear-hotel',
+    loadChildren: () => import('./administrador/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule)
+  },
 ];
 
 @NgModule({

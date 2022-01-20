@@ -11,4 +11,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  logout(){
+    
+    console.log("hola mundo");
+  }
 }
