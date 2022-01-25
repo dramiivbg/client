@@ -6,12 +6,12 @@ export class Hotel {
     public direccion: string;
 
 
-    set( id: number, id_admin: number, nombre: string, direccion: string ){
+    set( data: any ){
 
-        this.id = id;
-        this.id_admin = id_admin;
-        this.nombre = nombre;
-        this.direccion = direccion;
+        this.id = data.id;
+        this.id_admin = data.id_admin;
+        this.nombre = data.nombre;
+        this.direccion = data.direccion;
 
     }
 }
