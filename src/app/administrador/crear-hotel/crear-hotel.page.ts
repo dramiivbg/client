@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-hotel',
@@ -7,19 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearHotelPage implements OnInit {
 
+
   constructor() { }
 
   private image:any;
   ngOnInit() {
-  }
 
 
-  handleImage(event:any): void{
- 
-    this.image = event.target.files[0];
-    
-    console.log(this.image);
-  
-  }
 
+
+}
 }

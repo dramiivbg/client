@@ -33,6 +33,7 @@ const routes: Routes = [
     path: 'crear-hotel',
     loadChildren: () => import('./administrador/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule)
   },
+ 
 ];
 
 @NgModule({

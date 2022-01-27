@@ -1,0 +1,52 @@
+<div [formGroup]="form">
+    
+
+
+<ion-item>
+  
+  <ion-input formControlName="nombre" placeholder="nombre del hotel"></ion-input>
+
+
+</ion-item>
+
+<div *ngIf="form.controls['nombre'].errors" >
+  <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
+  <ion-text *ngIf="form.controls['nombre'].errors['minlength']" color="danger">*Debe tener almenos 3 letras</ion-text>
+
+
+</div>
+
+
+<ion-item>
+
+  <ion-input formControlName="direccion" placeholder="direccion del hotel"></ion-input>
+ 
+
+</ion-item>
+<div *ngIf="form.controls['direccion'].errors">
+  <ion-text *ngIf="form.controls['direccion'].errors['required']" color="danger">*Campo requerido</ion-text>
+  <ion-text *ngIf="form.controls['direccion'].errors['minlength']" color="danger">*Debe tener almenos 10 letras</ion-text>
+
+
+</div>
+
+
+
+<ion-item>
+  <div class="container-input-file">
+    <label class="custom-file">
+        <input formControlName="imagen"  type="file"  (change)="handleImage($event)"/>
+        <ion-icon name="cloud-upload-outline" ></ion-icon> <span>CHOOSE IMAGE</span>
+    </label>
+</div>&nbsp;
+
+<div *ngIf="form.controls['imagen'].errors">
+  <ion-text *ngIf="form.controls['imagen'].errors['required']" color="danger">*Campo requerido</ion-text>
+
+
+</div>
+</ion-item>
+
+<ion-button expand="block"></ion-button>
+
+</div>
