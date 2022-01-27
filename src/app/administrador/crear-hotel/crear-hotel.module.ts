@@ -8,6 +8,7 @@ import { CrearHotelPageRoutingModule } from './crear-hotel-routing.module';
 
 import { CrearHotelPage } from './crear-hotel.page';
 import { FormHotelComponent } from '../form-hotel/form-hotel.component';
+import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { FormHotelComponent } from '../form-hotel/form-hotel.component';
     CrearHotelPageRoutingModule,
     FormsModule, ReactiveFormsModule
   ],
-  declarations: [CrearHotelPage, FormHotelComponent]
+  declarations: [CrearHotelPage, FormHotelComponent, NavbarComponent]
 })
 export class CrearHotelPageModule {}

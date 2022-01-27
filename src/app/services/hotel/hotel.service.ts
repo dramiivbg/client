@@ -23,8 +23,15 @@ export class HotelService {
 
   }
 
+  get$(): Observable<Hotel>{
+
+    return this.hotel$.asObservable();
+
+  }
+
   all(): Observable<any>{
 
+    this.hoteles = [];
    return this.http.get<Hotel[]>(this.url + '/hotel')
     .pipe(
       map((res: any[]) => {
@@ -42,4 +49,27 @@ export class HotelService {
 
       }));
  }
+
+
+ get(id: any): Observable<any>{
+
+  this.hotel = new Hotel();
+  return this.http.get<Hotel[]>(this.url + '/hotel/'+ id)
+   .pipe(
+     map((res: any[]) => {
+
+
+       res.forEach((item: any) => {
+
+         this.hotel = new Hotel();
+         this.hotel.set(item);
+       
+
+       });
+
+       this.hotel$.next(this.hotel);
+
+     }));
+}
+
 }

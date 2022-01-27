@@ -36,9 +36,9 @@
   <div class="container-input-file">
     <label class="custom-file">
         <input formControlName="imagen"  type="file"  (change)="handleImage($event)"/>
-        <ion-icon name="cloud-upload-outline" ></ion-icon> <span>CHOOSE IMAGE</span>
+        <ion-icon name="cloud-upload-outline" ></ion-icon>&nbsp; <span>CHOOSE IMAGE</span>
     </label>
-</div>&nbsp;
+</div>&nbsp;&nbsp;
 
 <div *ngIf="form.controls['imagen'].errors">
   <ion-text *ngIf="form.controls['imagen'].errors['required']" color="danger">*Campo requerido</ion-text>
@@ -47,6 +47,6 @@
 </div>
 </ion-item>
 
-<ion-button expand="block"></ion-button>
+<ion-button expand="block">crear</ion-button>
 
 </div>
