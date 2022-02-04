@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HabitacionService {
 
-  public url = environment.Url;
+  public url = environment.url;
   public http : HttpClient;
   constructor() { }
 

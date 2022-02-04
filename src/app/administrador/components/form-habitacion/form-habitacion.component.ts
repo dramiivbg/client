@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Hotel } from 'src/app/model/hotel';
-
+import { Habitacion } from 'src/app/model/habitacion';
 
 @Component({
-  selector: 'app-form-hotel',
-  templateUrl: './form-hotel.component.html',
-  styleUrls: ['./form-hotel.component.scss'],
+  selector: 'app-form-habitacion',
+  templateUrl: './form-habitacion.component.html',
+  styleUrls: ['./form-habitacion.component.scss'],
 })
-export class FormHotelComponent implements OnInit {
-
+export class FormHabitacionComponent implements OnInit {
   public form: FormGroup;
   private image:any;
   public previsualizacion: string;
-  public archivos:any[] = [];
+ 
   constructor(private sanitizer: DomSanitizer) { }
 
 
@@ -22,9 +20,9 @@ export class FormHotelComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      imagen : new  FormControl('', [Validators.required]),
-      direccion : new  FormControl('', [Validators.required, Validators.minLength(10)]),
-
+      img : new  FormControl('', [Validators.required]),
+      valor : new  FormControl(0, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]),
+      descripcion: new FormControl('', [Validators.required, Validators.minLength(50)]),
       nombre : new  FormControl('', [Validators.required, Validators.minLength(3)]),
       
 
@@ -36,7 +34,8 @@ export class FormHotelComponent implements OnInit {
     this.image = event.target.files[0];
     this.extraerBase64(this.image).then((imagen: any) => {
       this.previsualizacion = imagen.base;
-      console.log(imagen)
+
+     // console.log(imagen)
     })
     //this.archivos.push(this.image);
    // console.log(this.archivos);
@@ -70,16 +69,15 @@ export class FormHotelComponent implements OnInit {
 
   }); 
 
-  addNewHotel(data: any){
 
-    console.log(data);
 
-  }
+  create(data: Habitacion){
 
-  create(){
-
-  console.log("creado");
+    data.img = this.previsualizacion;
+  console.log(data);
   }
 
 
 }
+
+

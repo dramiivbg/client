@@ -27,12 +27,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./administrador/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./administrador/pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'crear-hotel',
-    loadChildren: () => import('./administrador/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule)
+    loadChildren: () => import('./administrador/pages/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule)
   },
+  {
+    path: 'crear-habitacion',
+    loadChildren: () => import('./administrador/pages/crear-habitacion/crear-habitacion.module').then( m => m.CrearHabitacionPageModule)
+  }
  
 ];
 

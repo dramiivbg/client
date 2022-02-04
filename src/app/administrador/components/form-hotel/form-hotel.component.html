@@ -1,4 +1,4 @@
-<div novalidate [formGroup]="form" (ngSubmit)="addNewHotel(form.value)"  #f="ngForm">
+<div novalidate [formGroup]="form"   #f="ngForm">
     
 
 
@@ -35,13 +35,13 @@
 <ion-item>
   <div class="container-input-file">
     <label class="custom-file">
-        <input formControlName="imagen"  type="file"  (change)="handleImage($event)"/>
+        <input formControlName="img"  type="file"  (change)="handleImage($event)"/>
         <ion-icon name="cloud-upload-outline" ></ion-icon>&nbsp; <span>CHOOSE IMAGE</span>
     </label>
 </div>&nbsp;&nbsp;
 
-<div *ngIf="form.controls['imagen'].errors">
-  <ion-text *ngIf="form.controls['imagen'].errors['required']" color="danger">*Campo requerido</ion-text>
+<div *ngIf="form.controls['img'].errors">
+  <ion-text *ngIf="form.controls['img'].errors['required']" color="danger">*Campo requerido</ion-text>
 
 
 </div>
@@ -57,7 +57,7 @@
 
 
 <div class="container-button">
-  <input type="submit" [disabled]="f.invalid" class="mat-flat-button" value="Save" (click)="create()">
+  <input type="submit" [disabled]="f.invalid" class="mat-flat-button" value="Save" (click)="create(form.value)">
 </div>
 
 </div>

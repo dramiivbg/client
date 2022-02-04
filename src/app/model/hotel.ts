@@ -4,6 +4,7 @@ export class Hotel {
     public id_admin: number;
     public nombre: string;
     public direccion: string;
+    public img : string;
 
 
     set( data: any ){

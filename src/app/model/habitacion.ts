@@ -7,6 +7,7 @@ export class Habitacion {
     public nombre: string;
     public valor: number;
     public descripcion: string;
+    public img: string;
 
 
 }

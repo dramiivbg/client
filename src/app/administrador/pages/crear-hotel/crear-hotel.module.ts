@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CrearHotelPageRoutingModule } from './crear-hotel-routing.module';
 
 import { CrearHotelPage } from './crear-hotel.page';
-import { FormHotelComponent } from '../form-hotel/form-hotel.component';
+import { FormHotelComponent } from '../../components/form-hotel/form-hotel.component';
 import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
 
 @NgModule({
