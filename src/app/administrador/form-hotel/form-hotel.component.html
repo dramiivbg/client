@@ -1,4 +1,4 @@
-<div [formGroup]="form">
+<div novalidate [formGroup]="form" (ngSubmit)="addNewHotel(form.value)"  #f="ngForm">
     
 
 
@@ -45,8 +45,20 @@
 
 
 </div>
-</ion-item>
 
-<ion-button expand="block">crear</ion-button>
+<div *ngIf="previsualizacion">
+
+  <img width="100px" [src]="previsualizacion" alt="">
 
 </div>
+
+</ion-item>
+
+
+
+<div class="container-button">
+  <input type="submit" [disabled]="f.invalid" class="mat-flat-button" value="Save" (click)="create()">
+</div>
+
+</div>
+

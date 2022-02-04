@@ -59,6 +59,7 @@ export class HotelService {
      map((res: any[]) => {
 
 
+      
        res.forEach((item: any) => {
 
          this.hotel = new Hotel();
