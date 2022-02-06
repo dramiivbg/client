@@ -72,9 +72,11 @@
   
   
   
-  <div class="container-button">
-    <input type="submit" [disabled]="f.invalid" class="mat-flat-button" value="Save" (click)="create(form.value)">
-  </div>
+  <section>
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create(form.value)">create</ion-button>
+  </section>
+  
+  
   
   </div>
   

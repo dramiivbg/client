@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Hotel } from 'src/app/model/hotel';
+import { HotelService } from 'src/app/services/hotel/hotel.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class FormHotelComponent implements OnInit {
   private image:any;
   public previsualizacion: string;
   
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, public hotelService: HotelService) { }
 
 
   ngOnInit() {
@@ -75,8 +76,16 @@ export class FormHotelComponent implements OnInit {
 
   create(data: Hotel){
 
-    data.img = this.previsualizacion;
-  console.log(data);
+   // data.img = this.previsualizacion;
+    data.id_admin = 2;
+
+  
+
+    this.hotelService.create(data).subscribe(res => {
+
+      console.log(res);
+    })
+    
   }
 
 

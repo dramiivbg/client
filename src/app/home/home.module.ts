@@ -14,7 +14,8 @@ import { HotelComponent } from './components/hotel/hotel.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    
   ],
   declarations: [HomePage, NavbarComponent, HotelComponent]
 })
