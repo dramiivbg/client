@@ -9,6 +9,9 @@ import { User } from 'src/app/model/user';
 })
 export class FormLoginComponent implements OnInit {
 
+
+
+
   public form: FormGroup;
   constructor() { }
 
@@ -16,7 +19,7 @@ export class FormLoginComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      user : new  FormControl('', [Validators.required, Validators.email]),
+      email : new  FormControl('', [Validators.required, Validators.email]),
       password : new  FormControl('', [Validators.required]),
 
       
@@ -28,6 +31,9 @@ export class FormLoginComponent implements OnInit {
 
   create(data: User){
 
+
+    console.log(data);
+
     // data.img = this.previsualizacion;
      
  
@@ -36,5 +42,4 @@ export class FormLoginComponent implements OnInit {
     
      
    }
-
 }

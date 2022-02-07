@@ -16,10 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./habitaciones/habitaciones.module').then( m => m.HabitacionesPageModule)
   },
 
-  {
-    path: 'login',
-    loadChildren: () => import('./home/pages/login/login-routing.module').then( m => m.LoginPageRoutingModule)
-  },
+  
+ 
   
   {
     path: 'calificacion',
@@ -36,6 +34,14 @@ const routes: Routes = [
   {
     path: 'crear-habitacion',
     loadChildren: () => import('./administrador/pages/crear-habitacion/crear-habitacion.module').then( m => m.CrearHabitacionPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'crear-user',
+    loadChildren: () => import('./usuario/pages/crear-user/crear-user.module').then( m => m.CrearUserPageModule)
   }
  
 ];

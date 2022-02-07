@@ -1,6 +1,6 @@
 export class Hotel {
 
-    public id: number;
+    public id?: number;
     public id_admin: number;
     public nombre: string;
     public direccion: string;

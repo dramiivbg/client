@@ -1,0 +1,99 @@
+
+<div novalidate [formGroup]="form"   #f="ngForm">
+    
+
+    
+  <ion-item>
+
+    <ion-input formControlName="nombres" placeholder="Ingrese sus nombres"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['nombres'].errors" >
+    <ion-text *ngIf="form.controls['nombres'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+
+  <ion-item>
+  
+    <ion-input formControlName="apellidos" placeholder="Ingrese sus apellidos"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['apellidos'].errors" >
+    <ion-text *ngIf="form.controls['apellidos'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+    
+
+ 
+
+  <ion-item>
+
+    <ion-icon name="call-outline"></ion-icon>
+ 
+    <ion-select formControlName="postal" value="+57">
+     
+      <ion-select-option value="+57">+57</ion-select-option>
+      
+
+    </ion-select>
+
+   
+    <ion-input  formControlName="telefono" placeholder="Ingrese su numero telefonico"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['telefono'].errors" >
+    <ion-text *ngIf="form.controls['telefono'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['telefono'].errors['minLength']" color="danger">*ingrese por lo menos 10 digitos</ion-text>
+    <ion-text *ngIf="form.controls['telefono'].errors['pattern']" color="danger">*campo numerico</ion-text>
+
+  
+  </div>
+
+  <div *ngIf="form.controls['postal'].errors" >
+    <ion-text *ngIf="form.controls['postal'].errors['required']" color="danger">*Campo requerido</ion-text>
+
+
+  
+  </div>
+
+  <ion-item>
+    <ion-icon name="person-outline"></ion-icon>
+    <ion-input formControlName="email" placeholder="gmail"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['email'].errors" >
+    <ion-text *ngIf="form.controls['email'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['email'].errors['email']" color="danger">*Ingresa correo electronico</ion-text>
+
+  
+  </div>
+  
+  
+  <ion-item>
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    <ion-input formControlName="password" placeholder="Password" type="password"></ion-input>
+  </ion-item>
+  <div *ngIf="form.controls['password'].errors">
+    <ion-text *ngIf="form.controls['password'].errors['required']" color="danger">*Campo requerido</ion-text>
+   
+ 
+  
+  
+  </div>
+  
+    
+  <section>
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create()">create</ion-button>
+  </section>
+
+
+  
+  
+  
+  </div>

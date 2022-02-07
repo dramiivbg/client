@@ -1,15 +1,18 @@
 
 <div novalidate [formGroup]="form"   #f="ngForm">
-    
+
+  
+
 
 
   <ion-item>
     <ion-icon name="person-outline"></ion-icon>
-    <ion-input formControlName="user" placeholder="gmail"></ion-input>
+    <ion-input formControlName="email" placeholder="gmail"></ion-input>
   </ion-item>
   
-  <div *ngIf="form.controls['user'].errors" >
-    <ion-text *ngIf="form.controls['user'].errors['required']" color="danger">*Campo requerido</ion-text>
+  <div *ngIf="form.controls['email'].errors" >
+    <ion-text *ngIf="form.controls['email'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['email'].errors['email']" color="danger">*Ingresa correo electronico</ion-text>
 
   
   </div>
@@ -21,6 +24,7 @@
   </ion-item>
   <div *ngIf="form.controls['password'].errors">
     <ion-text *ngIf="form.controls['password'].errors['required']" color="danger">*Campo requerido</ion-text>
+   
  
   
   
@@ -30,6 +34,13 @@
   <section>
     <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create(form.value)">create</ion-button>
   </section>
+
+  <div>
+
+
+    <a [routerLink]="['/routePath']" routerLinkActive="router-link-active">crear usuario</a> 
+
+  </div>
   
   
   
