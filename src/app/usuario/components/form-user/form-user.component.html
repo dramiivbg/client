@@ -1,5 +1,5 @@
 
-<div novalidate [formGroup]="form"   #f="ngForm">
+<div novalidate [formGroup]="form"    #f="ngForm" >
     
 
     
@@ -73,6 +73,26 @@
 
   
   </div>
+
+  <ion-item>
+
+  <ion-select formControlName="rol">
+
+
+    <ion-select-option *ngFor="let rol of roles" value="{{rol.rol}}}">{{rol.rol}}</ion-select-option>
+  </ion-select>
+
+</ion-item>
+
+   
+  <div *ngIf="form.controls['rol'].errors" >
+    <ion-text *ngIf="form.controls['rol'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+
   
   
   <ion-item>
