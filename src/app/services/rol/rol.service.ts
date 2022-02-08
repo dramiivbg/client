@@ -38,11 +38,7 @@ export class RolService {
     return this.http.get<Rol[]>(this.url + '/rol')
      .pipe(
        map((res: any[]) => {
- 
-        
- 
-         res.forEach((item: any) => {
- 
+        res.forEach((item: any) => {
            this.rol = new Rol();
            this.rol.set(item);
            this.roles.push(this.rol);

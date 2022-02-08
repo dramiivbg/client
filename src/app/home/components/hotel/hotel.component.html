@@ -2,8 +2,10 @@
 
 
 
-  <ion-card style="text-align: center;">
+  <ion-card style="text-align: center;" >
 
+    
+  
     <ion-card-header>
     
       <ion-card-title>Card Title</ion-card-title>
@@ -11,9 +13,12 @@
   
     <ion-card-content>
 
+      <a [routerLink]="['/habitaciones']" routerLinkActive="router-link-active">
 
+        <img  src="assets/img/hotel.jpg" alt="hola" >
+      </a>
       
-      <ion-img  src="assets/img/hotel.jpg" alt="hola" ><a [routerLink]="['/habitaciones']" routerLinkActive="router-link-active"></a> </ion-img>
+  
       
 
   

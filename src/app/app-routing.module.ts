@@ -42,6 +42,12 @@ const routes: Routes = [
   {
     path: 'crear-user',
     loadChildren: () => import('./usuario/pages/crear-user/crear-user.module').then( m => m.CrearUserPageModule)
+  },
+
+  {
+
+    path: 'habitaciones',
+    loadChildren: () => import('./habitaciones/habitaciones-routing.module').then(m => m.HabitacionesPageRoutingModule)
   }
  
 ];
