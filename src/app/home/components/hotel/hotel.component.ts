@@ -9,7 +9,7 @@ import { HotelService } from 'src/app/services/hotel/hotel.service';
   styleUrls: ['./hotel.component.scss'],
 })
 export class HotelComponent implements OnInit {
- 
+  valoracion:number[] = [1,2,3,4,5];
   public hotel: Hotel;
   public hoteles: Hotel[] = [];
   public hotelSubscripcion = new Subscription();
@@ -23,11 +23,14 @@ export class HotelComponent implements OnInit {
     this.hotelSubscripcion = this.hotelService.all$().subscribe(res => {
 
       this.hoteles = res;
+
+      
     });
 
+    
     this.hotelService.all().subscribe(res => {
 
-      console.log("listo");
+      console.log('listo');
 
     });
  

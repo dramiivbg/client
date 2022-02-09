@@ -11,20 +11,9 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'habitaciones',
-    loadChildren: () => import('./habitaciones/habitaciones.module').then( m => m.HabitacionesPageModule)
-  },
-
-  
- 
   
   {
-    path: 'calificacion',
-    loadChildren: () => import('./habitaciones/calificar/calificar-routing.module').then( m => m.CalificarPageRoutingModule)
-  },
-  {
-    path: 'home',
+    path: 'admin',
     loadChildren: () => import('./administrador/pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -47,8 +36,18 @@ const routes: Routes = [
   {
 
     path: 'habitaciones',
-    loadChildren: () => import('./habitaciones/habitaciones-routing.module').then(m => m.HabitacionesPageRoutingModule)
-  }
+    loadChildren: () => import('./habitaciones/pages/habitacion/habitacion.module').then(m => m.HabitacionPageModule)
+  },
+  {
+    path: 'calificacion',
+    loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule)
+  },
+  {
+    path: 'comentarios',
+    loadChildren: () => import('./habitaciones/pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule)
+  },
+  
+
  
 ];
 

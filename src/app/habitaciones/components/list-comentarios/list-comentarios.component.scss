@@ -1,0 +1,20 @@
+
+.navigate{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  
+  $rowHeight: 40px;
+  .flexp {
+  
+    ion-searchbar{
+  
+      width: 40vh;
+    }
+  
+      column-count: 2;
+  max-height: calc(5 * #{$rowHeight});
+  }
+  }

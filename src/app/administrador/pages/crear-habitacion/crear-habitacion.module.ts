@@ -8,6 +8,7 @@ import { CrearHabitacionPageRoutingModule } from './crear-habitacion-routing.mod
 
 import { CrearHabitacionPage } from './crear-habitacion.page';
 import { FormHabitacionComponent } from '../../components/form-habitacion/form-habitacion.component';
+import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { FormHabitacionComponent } from '../../components/form-habitacion/form-h
     CrearHabitacionPageRoutingModule,
     FormsModule, ReactiveFormsModule
   ],
-  declarations: [CrearHabitacionPage, FormHabitacionComponent]
+  declarations: [CrearHabitacionPage, FormHabitacionComponent,  NavbarComponent ]
 })
 export class CrearHabitacionPageModule {}

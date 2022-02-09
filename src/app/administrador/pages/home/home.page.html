@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
+
+
+<ion-header [translucent]="true">
+
+  <title>admin</title>
+
+ 
 </ion-header>
 
-<ion-content>
+<ion-toolbar>
 
+ <app-menu></app-menu>
+
+  <app-navbar></app-navbar>
+
+</ion-toolbar>
+
+  
+
+<ion-content [fullscreen]="true">
+
+
+
+
+    
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+    
+  </ion-header>
+
+  <app-hotel></app-hotel>
 </ion-content>
+
+

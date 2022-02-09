@@ -9,6 +9,9 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
 
+import { HotelComponent } from 'src/app/home/components/hotel/hotel.component';
+import { MenuComponent } from '../../components/menu/menu/menu.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +19,6 @@ import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage,NavbarComponent]
+  declarations: [HomePage,NavbarComponent, HotelComponent, MenuComponent]
 })
 export class HomePageModule {}

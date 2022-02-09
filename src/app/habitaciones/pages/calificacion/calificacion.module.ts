@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CalificarPageRoutingModule } from './calificar-routing.module';
+import { CalificacionPageRoutingModule } from './calificacion-routing.module';
 
-import { CalificarPage } from './calificar.page';
+import { CalificacionPage } from './calificacion.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CalificarPageRoutingModule
+    CalificacionPageRoutingModule
   ],
-  declarations: [CalificarPage]
+  declarations: [CalificacionPage]
 })
-export class CalificarPageModule {}
+export class CalificacionPageModule {}
