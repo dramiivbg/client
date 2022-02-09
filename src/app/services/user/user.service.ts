@@ -62,7 +62,7 @@ export class UserService {
       map((res: any[]) => {
  
  
-       
+        if(res.length >0){
         res.forEach((item: any) => {
  
           this.usuario = new User();
@@ -71,10 +71,12 @@ export class UserService {
  
         });
  
+    }
         this.usuario$.next(this.usuario);
  
       }));
  }
+
  
  
  create(hotel: User){

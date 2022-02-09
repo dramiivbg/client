@@ -3,9 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import * as crypto from 'crypto-js'; 
 import { UserService } from 'src/app/services/user/user.service';
-import { RolService } from 'src/app/services/rol/rol.service';
-import { Rol } from 'src/app/model/rol';
+
 import { Subscription } from 'rxjs';
+import { Perfil } from 'src/app/model/perfil';
+import { PerfilService } from 'src/app/services/perfil/perfil.service';
 
 @Component({
   selector: 'app-form-user',
@@ -20,10 +21,8 @@ export class FormUserComponent implements OnInit {
 
   public passwd: string;
 
- 
-  public roles:Rol[] = [];
+  public perfil: Perfil;
 
-  public rol: Rol;
 
   public key: any;
   public iv: any;
@@ -36,29 +35,11 @@ export class FormUserComponent implements OnInit {
   public telefono: string;
   public user: User;
   public postal: string;
-  constructor( public UserService: UserService, public rolService: RolService) { }
+  constructor( public UserService: UserService, public perfilService: PerfilService) { }
 
   ngOnInit() {
 
-    this.roles = [];
 
-    this.hotelSubscripcion =  this.rolService.all$().subscribe(res => {
-
-     this.roles = res;
-
-    
-
-    });
-
-     this.rolService.all().subscribe(res => {
-
-      console.log("listo");
-
-   
-
-  
-
-    });
 
     this.form = new FormGroup({
 
@@ -106,13 +87,24 @@ this.iv = crypto.SHA512('12345678').toString();
 
 this.UserService.create(this.user).subscribe((res:any) => {
 
-  console.log(res);
+  if(res.length > 0){
 
+  this.perfil = new Perfil();
+
+  this.perfil.id_user = res.id_user;
+  this.perfil.rol = this.form.get('rol').value;
+
+
+  this.perfilService.create(this.perfil).subscribe(res => {
+
+    console.log(res);
+  })
+  };
 });
 
 
 
-    // data.img = this.previsualizacion;
+  
      
  
    

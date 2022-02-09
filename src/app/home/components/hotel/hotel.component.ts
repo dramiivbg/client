@@ -20,7 +20,7 @@ export class HotelComponent implements OnInit {
 
   ngOnInit() {
 
-  /*  this.hotelSubscripcion = this.hotelService.all$().subscribe(res => {
+    this.hotelSubscripcion = this.hotelService.all$().subscribe(res => {
 
       this.hoteles = res;
     });
@@ -30,7 +30,7 @@ export class HotelComponent implements OnInit {
       console.log("listo");
 
     });
-*/ 
+ 
   }
 
 }

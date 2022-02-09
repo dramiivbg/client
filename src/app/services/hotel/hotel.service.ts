@@ -36,6 +36,8 @@ export class HotelService {
     .pipe(
       map((res: any[]) => {
 
+          console.log(res);
+          if(res.length >0){
 
         res.forEach((item: any) => {
 
@@ -44,7 +46,7 @@ export class HotelService {
           this.hoteles.push(this.hotel);
 
         });
-
+      }
         this.hoteles$.next(this.hoteles);
 
       }));

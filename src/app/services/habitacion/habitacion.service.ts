@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url } from 'inspector';
 import { environment } from 'src/environments/environment';
+import {map, catchError} from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { Habitacion } from 'src/app/model/habitacion';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +12,90 @@ import { environment } from 'src/environments/environment';
 export class HabitacionService {
 
   public url = environment.url;
-  public http : HttpClient;
-  constructor() { }
+  public habitaciones$ = new Subject<Habitacion[]>();
+  public habitacion$ = new Subject<Habitacion>();
+  public habitaciones: Habitacion[] = [];
+  public habitacion: Habitacion;
+   constructor(
+     public http : HttpClient
+   ) { }
+ 
+   all$(): Observable<Habitacion[]>{
+ 
+     return this.habitaciones$.asObservable();
+ 
+   }
+ 
+   get$(): Observable<Habitacion>{
+ 
+     return this.habitacion$.asObservable();
+ 
+   }
+ 
+   all(): Observable<any>{
+ 
+     this.habitaciones = [];
+    return this.http.get<Habitacion[]>(this.url + '/habitacion')
+     .pipe(
+       map((res: any[]) => {
+ 
+        if(res.length >0){
 
-  all(){
+         res.forEach((item: any) => {
+ 
+           this.habitacion = new Habitacion();
+           this.habitacion.set(item);
+           this.habitaciones.push(this.habitacion);
+ 
+         });
 
-     this.http.get(this.url + '/habitacion').subscribe(res => 
-      
-      console.log(res)
-
-      );
+        }   
+ 
+         this.habitaciones$.next(this.habitaciones);
+ 
+       }));
   }
+ 
+ 
+  get(id: any): Observable<any>{
+ 
+   this.habitacion = new Habitacion();
+   return this.http.get<Habitacion[]>(this.url + '/habitacion/'+ id)
+    .pipe(
+      map((res: any[]) => {
+ 
+ 
+        if(res.length >0){
+        res.forEach((item: any) => {
+ 
+          this.habitacion = new Habitacion();
+          this.habitacion.set(item);
+        
+ 
+        });
+ 
+    }
+        this.habitacion$.next(this.habitacion);
+ 
+      }));
+ }
+
+ 
+ 
+ create(habitacion: Habitacion){
+ 
+   
+ 
+   
+   return this.http.post<Habitacion>(this.url + '/habitacion',habitacion)
+    .pipe(
+      map((res: any) => {
+ 
+          this.habitacion = new Habitacion();
+          this.habitacion.set(res);
+        
+          this.habitacion$.next(this.habitacion);
+ 
+      }));
+ }
 }
