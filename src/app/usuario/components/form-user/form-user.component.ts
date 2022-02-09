@@ -7,6 +7,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import { Subscription } from 'rxjs';
 import { Perfil } from 'src/app/model/perfil';
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-user',
@@ -35,7 +37,7 @@ export class FormUserComponent implements OnInit {
   public telefono: string;
   public user: User;
   public postal: string;
-  constructor( public UserService: UserService, public perfilService: PerfilService) { }
+  constructor( public UserService: UserService, public perfilService: PerfilService, public router: Router) { }
 
   ngOnInit() {
 
@@ -85,32 +87,22 @@ this.iv = crypto.SHA512('12345678').toString();
 
 
 
-this.UserService.create(this.user).subscribe((res:any) => {
+ this.UserService.create(this.user).subscribe();
 
-  if(res.length > 0){
-
-  this.perfil = new Perfil();
-
-  this.perfil.id_user = res.id_user;
-  this.perfil.rol = this.form.get('rol').value;
+  
+  
 
 
-  this.perfilService.create(this.perfil).subscribe(res => {
-
-    console.log(res);
-  })
-  };
-});
 
 
 
   
-     
- 
-   
- 
-    
-     
+
+
+
    }
 
+
+
+        
 }

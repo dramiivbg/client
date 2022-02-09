@@ -87,15 +87,7 @@ export class HabitacionService {
    
  
    
-   return this.http.post<Habitacion>(this.url + '/habitacion',habitacion)
-    .pipe(
-      map((res: any) => {
- 
-          this.habitacion = new Habitacion();
-          this.habitacion.set(res);
-        
-          this.habitacion$.next(this.habitacion);
- 
-      }));
+   return this.http.post<Habitacion>(this.url + '/habitacion',habitacion);
+    
  }
 }

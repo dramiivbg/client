@@ -31,6 +31,8 @@ export class UserService {
      return this.usuario$.asObservable();
  
    }
+
+  
  
    all(): Observable<any>{
  
@@ -79,21 +81,44 @@ export class UserService {
 
  
  
- create(hotel: User){
- 
-   console.log(hotel);
+ create(user: User){
  
    
-   return this.http.post<User>(this.url + '/usuario',hotel)
+ 
+   
+   return this.http.post<User>(this.url + '/usuario',user)
     .pipe(
       map((res: any) => {
- 
-          this.usuario = new User();
-          this.usuario.set(res);
+
         
-          this.usuario$.next(this.usuario);
  
+        
+          this.usuario = new User();
+
+           
+
+        
+         // this.usuario.set(res);
+
+
+
+        
+      
       }));
+
+     // return this.usuario;
  }
+
+ delete(id: any){
+
+  return this.http.delete<User>(this.url + '/usuario', id)
+     .pipe(
+       map((res: any) => {
+
+         this.all();
+
+       })
+     )
+}
  
 }

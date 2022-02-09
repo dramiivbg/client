@@ -86,15 +86,7 @@ export class PerfilService {
    
  
    
-   return this.http.post<Perfil>(this.url + '/perfil',perfil)
-    .pipe(
-      map((res: any) => {
- 
-          this.perfil = new Perfil();
-          this.perfil.set(res);
-        
-          this.perfil$.next(this.perfil);
- 
-      }));
+   return this.http.post<Perfil>(this.url + '/perfil',perfil);
+    
  }
 }

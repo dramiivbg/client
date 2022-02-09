@@ -81,16 +81,8 @@ create(hotel: Hotel){
   console.log(hotel);
 
   
-  return this.http.post<Hotel>(this.url + '/hotel',hotel)
-   .pipe(
-     map((res: any) => {
-
-         this.hotel = new Hotel();
-         this.hotel.set(res);
-       
-         this.hotel$.next(this.hotel);
-
-     }));
+  return this.http.post<Hotel>(this.url + '/hotel',hotel);
+   
 }
 
 
