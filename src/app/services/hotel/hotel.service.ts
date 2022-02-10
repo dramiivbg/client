@@ -31,22 +31,20 @@ export class HotelService {
 
   all(): Observable<any>{
 
-    this.hoteles = [];
+  
    return this.http.get<Hotel[]>(this.url + '/hotel')
     .pipe(
-      map((res: any[]) => {
+      map ((res: any[]) => {
 
-          console.log(res);
-          if(res.length >0){
+       
+      res['data'].forEach((item: any) => {
 
-        res.forEach((item: any) => {
-
-          this.hotel = new Hotel();
+        this.hotel = new Hotel();
           this.hotel.set(item);
           this.hoteles.push(this.hotel);
 
         });
-      }
+      
         this.hoteles$.next(this.hoteles);
 
       }));
@@ -62,7 +60,7 @@ export class HotelService {
 
 
       
-       res.forEach((item: any) => {
+       res['data'].forEach((item: any) => {
 
          this.hotel = new Hotel();
          this.hotel.set(item);

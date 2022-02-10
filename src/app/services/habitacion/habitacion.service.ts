@@ -41,7 +41,7 @@ export class HabitacionService {
  
         if(res.length >0){
 
-         res.forEach((item: any) => {
+         res['data'].forEach((item: any) => {
  
            this.habitacion = new Habitacion();
            this.habitacion.set(item);
@@ -60,23 +60,23 @@ export class HabitacionService {
   get(id: any): Observable<any>{
  
    this.habitacion = new Habitacion();
-   return this.http.get<Habitacion[]>(this.url + '/habitacion/'+ id)
+   return this.http.get<Habitacion>(this.url + '/hotel/'+ id)
     .pipe(
-      map((res: any[]) => {
- 
- 
-        if(res.length >0){
-        res.forEach((item: any) => {
+      map((res: any) => {
+
+
+        res['data']['habitaciones'].forEach((item: any) => {
+
+        
+          
  
           this.habitacion = new Habitacion();
+
           this.habitacion.set(item);
         
- 
+        
+          this.habitacion$.next(this.habitacion);
         });
- 
-    }
-        this.habitacion$.next(this.habitacion);
- 
       }));
  }
 

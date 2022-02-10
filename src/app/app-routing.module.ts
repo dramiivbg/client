@@ -35,7 +35,7 @@ const routes: Routes = [
 
   {
 
-    path: 'habitaciones',
+    path: 'habitaciones/:id',
     loadChildren: () => import('./habitaciones/pages/habitacion/habitacion.module').then(m => m.HabitacionPageModule)
   },
   {
@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'comentarios',
     loadChildren: () => import('./habitaciones/pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule)
+  },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./usuario/pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
   
 

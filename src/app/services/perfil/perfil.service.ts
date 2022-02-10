@@ -65,7 +65,7 @@ export class PerfilService {
  
  
         if(res.length >0){
-        res.forEach((item: any) => {
+        res['data'].forEach((item: any) => {
  
           this.perfil = new Perfil();
           this.perfil.set(item);

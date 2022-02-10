@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Habitacion } from 'src/app/model/habitacion';
@@ -11,6 +11,7 @@ import { HabitacionService } from 'src/app/services/habitacion/habitacion.servic
 })
 export class ListHabitacionComponent implements OnInit {
 
+   @Input() habitacion$: Habitacion;
   public habitacion: Habitacion;
   public habitaciones: Habitacion[] = [];
   public habitacionSubscripcion = new Subscription();
@@ -18,18 +19,8 @@ export class ListHabitacionComponent implements OnInit {
 
   ngOnInit() {
 
- this.habitacionSubscripcion = this.habitacionService.all$().subscribe( res =>{
-
-
-  this.habitaciones = res;
- });
-
- this.habitacionService.all().subscribe(res => {
-
-  console.log('listo');
-
- });
-
+  
+ 
 
   }
 

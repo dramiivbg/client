@@ -42,7 +42,7 @@ export class UserService {
        map((res: any[]) => {
  
  
-         res.forEach((item: any) => {
+         res['data'].forEach((item: any) => {
  
            this.usuario = new User();
            this.usuario.set(item);
@@ -65,7 +65,7 @@ export class UserService {
  
  
         if(res.length >0){
-        res.forEach((item: any) => {
+        res['data'].forEach((item: any) => {
  
           this.usuario = new User();
           this.usuario.set(item);

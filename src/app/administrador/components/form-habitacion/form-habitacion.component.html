@@ -1,3 +1,11 @@
+
+  <script type="module">
+    import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.alertController = alertController;
+  </script>
+
+
+
 <div novalidate [formGroup]="form"   #f="ngForm">
     
 
@@ -33,7 +41,7 @@
   <ion-item>
 
 
-    <ion-textarea  formControlName="descripcion" placeholder="valor de la habitacion">
+    <ion-textarea  formControlName="descripcion" placeholder="describa  la habitacion">
 
 
     </ion-textarea>
@@ -72,11 +80,29 @@
   
   
   
-  <section>
-    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create(form.value)">create</ion-button>
-  </section>
   
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create(form.value)">create</ion-button>
+  
+  
+   
   
   
   </div>
+
+ 
+  <script>
+    const button = document.getElementById('button');
+    button.addEventListener('click', handleButtonClick);
+  
+    async function handleButtonClick() {
+      const alert = await alertController.create({
+        header: 'Use this lightsaber?',
+        message: 'Do you agree to use this lightsaber to do good across the galaxy?',
+        buttons: ['Disagree', 'Agree'],
+      });
+  
+      await alert.present();
+  
+    }
+  </script>
   

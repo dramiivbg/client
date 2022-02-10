@@ -7,11 +7,17 @@
     <title>home</title>
   </ion-toolbar>
 
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+  
 </ion-header>
 
 
 <ion-toolbar class="navigate">
   <div class="flexp">
+    <ion-menu></ion-menu>
     <ion-searchbar></ion-searchbar>
     <app-navbar ></app-navbar>
   </div>

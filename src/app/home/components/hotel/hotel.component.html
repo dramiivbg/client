@@ -2,23 +2,26 @@
 
 
 
-  <ion-card style="text-align: center;" >
+  <ion-card style="text-align: center;" *ngFor="let hotel of hoteles">
 
+
+  
     
   
     <ion-card-header>
+      
     
-      <ion-card-title>nombre</ion-card-title>
+      <ion-card-title>{{hotel.nombre}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
 
-      <a [routerLink]="['/habitaciones']" routerLinkActive="router-link-active">
+      <a [routerLink]="['/habitaciones', hotel.id]" routerLinkActive="router-link-active">
 
         <img  src="assets/img/hotel.jpg" alt="hola" >
       </a>
 
-      <p><strong>direccion:</strong> </p>
+      <p><strong>direccion:{{hotel.direccion}}</strong> </p>
 
       <div style="text-align: center;">
         <div class="ec-stars-wrapper " >
@@ -30,6 +33,7 @@
         </div>
         
         </div>
+
       
   
       

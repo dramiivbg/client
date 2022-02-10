@@ -78,16 +78,22 @@ export class FormHotelComponent implements OnInit {
 
   create(data: Hotel){
 
-   data.img = this.previsualizacion;
+    
+    this.router.navigate(['/crear-habitacion']);
+
+  /*
+    data.img = this.previsualizacion;
     data.id_admin = 5;
 
   
 
     this.hotelService.create(data).subscribe((res: any) => {
 
+      this.router.navigate(['/crear-habitacion']);
         
-    })
+    });
     
+    */
   }
 
 
