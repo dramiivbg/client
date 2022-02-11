@@ -10,7 +10,7 @@ export class Habitacion {
     public img: string;
 
     set(data: any){
-
+        this.id = data.id;
         this.id_hotel = data.id_hotel;
         this.nombre = data.nombre;
         this.valor = data.valor;

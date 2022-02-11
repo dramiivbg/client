@@ -43,7 +43,7 @@ const routes: Routes = [
     loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule)
   },
   {
-    path: 'comentarios',
+    path: 'comentarios/:id',
     loadChildren: () => import('./habitaciones/pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule)
   },
   {

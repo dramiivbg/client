@@ -59,24 +59,28 @@ export class UserService {
   get(id: any): Observable<any>{
  
    this.usuario = new User();
-   return this.http.get<User[]>(this.url + '/usuario/'+ id)
+
+   return this.http.get<User>(this.url + '/usuario/'+ id)
     .pipe(
-      map((res: any[]) => {
+      map((res: any) => {
  
  
-        if(res.length >0){
-        res['data'].forEach((item: any) => {
+      
+      
  
           this.usuario = new User();
-          this.usuario.set(item);
+          this.usuario.set(res['data']);
         
+         
  
-        });
+          this.usuario$.next(this.usuario);
+
+       
  
     }
-        this.usuario$.next(this.usuario);
+        
  
-      }));
+      ));
  }
 
  
