@@ -19,7 +19,7 @@ export class ComentariosPage implements OnInit {
 
   
   public userSubscripcion = new Subscription;
-  public user: User[] = [];
+  public users$: User[] = [];
 
 
   constructor(public router: ActivatedRoute, public calificacionService: CalificacionService,public userService: UserService ) { }
@@ -28,16 +28,27 @@ export class ComentariosPage implements OnInit {
 
   this.id =   this.router.snapshot.params.id;
 
-  
+  this.userSubscripcion =   this.userService.get$().subscribe((res:User) => {
 
+      
+
+    this.users$.push(res);
+  
+    });
+
+    
   this.calificacionSubscripcion = this.calificacionService.get$().subscribe((res: Calificacion) => {
 
 
-    this.calificaciones.push(res);
+     this.calificaciones.push(res);
+
+    this.users(res);
 
    
+ });
 
-      });
+ console.log('calificaciones => ', this.calificaciones);
+ console.log('users => ', this.users$);
 
   this.calificacionService.get(this.id).subscribe(res => {
 
@@ -49,32 +60,27 @@ export class ComentariosPage implements OnInit {
 
 
   
-this.users(this.calificaciones);
+// this.users(this.calificaciones);
 
   }
 
 
-  users(calificacion:Calificacion[]){
+  users(calificacion:Calificacion){
 
     
   
-    this.userSubscripcion =   this.userService.get$().subscribe((res:User) => {
-
-
-      this.user.push(res);
   
-    });
+
+
+this.userService.get(calificacion.id).subscribe(res => {
+
+  console.log('listo');
+})
+
 
     
-console.log(calificacion);
 
-  calificacion.forEach((res:any) => {
 
-    console.log(res);
-
-  });
-    
-   
   
   
     

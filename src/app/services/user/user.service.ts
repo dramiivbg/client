@@ -16,6 +16,8 @@ export class UserService {
   public usuario$ = new Subject<User>();
   public usuarios: User[] = [];
   public usuario: User;
+
+  public users: User[] = [];
    constructor(
      public http : HttpClient
    ) { }
@@ -72,18 +74,31 @@ export class UserService {
           this.usuario.set(res['data']);
         
          
- 
-          this.usuario$.next(this.usuario);
 
        
- 
-    }
-        
- 
-      ));
- }
+    this.usuario$.next(this.usuario);
 
  
+    } )
+    
+    
+    );
+
+    
+ 
+ }
+
+
+ set(users: User[]){
+
+  this.users = users;
+ }
+ 
+
+ getUsers(){
+
+  return this.users;
+ }
  
  create(user: User){
  

@@ -15,6 +15,8 @@ export class CalificacionService {
   public calificacion$ = new Subject<Calificacion>();
   public calificaciones: Calificacion[] = [];
   public calificacion: Calificacion;
+
+  public califis: Calificacion[] = [];
    constructor(
      public http : HttpClient
    ) { }
@@ -75,7 +77,16 @@ export class CalificacionService {
        }));
   }
  
- 
+ set(calificaciones: Calificacion[]){
+
+  this.califis = calificaciones;
+ }
+
+ getCalifi(){
+
+  return this.califis;
+ }
+
  
  create(calificacion: Calificacion){
  

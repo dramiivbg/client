@@ -12,10 +12,12 @@
 
 </ion-toolbar>
 
-<ion-content fullscreen>
+<ion-content fullscreen *ngFor="let user of users$" >
 
  
-  <app-list-comentarios *ngFor="let calificacion of calificaciones"  [calificacion]="calificacion" ></app-list-comentarios>
+  <app-list-comentarios *ngFor="let calificacion of calificaciones"  [calificacion]="calificacion" [user]="user" >
+
+  </app-list-comentarios>
 
 </ion-content>
 
