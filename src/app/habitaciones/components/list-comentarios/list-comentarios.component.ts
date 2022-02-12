@@ -14,12 +14,19 @@ export class ListComentariosComponent implements OnInit {
   @Input() calificacion: Calificacion;
   @Input() user: User;
 
+  public loading = false;
   
   constructor() { }
 
   ngOnInit() {
 
+     
+    if(!this.calificacion){
+      this.loading = true;
+      }else{
     
+        this.loading = false;
+      }
 
 
   }

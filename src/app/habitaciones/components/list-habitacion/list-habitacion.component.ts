@@ -13,13 +13,22 @@ export class ListHabitacionComponent implements OnInit {
 
    @Input() habitacion$: Habitacion;
   public habitacion: Habitacion;
-  public habitaciones: Habitacion[] = [];
-  public habitacionSubscripcion = new Subscription();
-  constructor( public habitacionService: HabitacionService, public router: Router) { }
+
+
+  public loading = false;
+  constructor(  public router: Router) { }
 
   ngOnInit() {
 
-  
+    
+    
+    if(!this.habitacion$){
+      this.loading = true;
+      }else{
+    
+        this.loading = false;
+      }
+    
  
 
   }

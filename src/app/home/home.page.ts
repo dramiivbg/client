@@ -9,6 +9,8 @@ import { HotelService } from '../services/hotel/hotel.service';
 })
 export class HomePage  {
 
+
+  
  
  
   constructor() {

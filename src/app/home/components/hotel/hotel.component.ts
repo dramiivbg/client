@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { empty, Subscription } from 'rxjs';
 import { Hotel } from 'src/app/model/hotel';
 import { HotelService } from 'src/app/services/hotel/hotel.service';
 
@@ -10,6 +10,8 @@ import { HotelService } from 'src/app/services/hotel/hotel.service';
 })
 export class HotelComponent implements OnInit {
   valoracion:number[] = [1,2,3,4,5];
+
+  public loading = true;
   
   public hoteles: Hotel[] = [];
   public hotelSubscripcion = new Subscription();
@@ -22,19 +24,31 @@ export class HotelComponent implements OnInit {
 
     this.hotelSubscripcion = this.hotelService.all$().subscribe((res: Hotel[]) => {
 
+     
+      if(res.length == 0 ){
+        this.loading = true;
+        }else{
+
+          this.loading = false;
+        }
       this.hoteles = res;
 
-      
-
-      
     });
 
+   
+
+    
+    
+   
+      
     
     this.hotelService.all().subscribe(res => {
 
       console.log('listo');
 
     });
+
+    
  
   }
 

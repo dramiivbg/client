@@ -16,7 +16,7 @@
 
   
 
-<ion-content [fullscreen]="true"  *ngIf="!loading">
+<ion-content [fullscreen]="true" >
 
 
   <ion-toolbar>
@@ -26,6 +26,7 @@
      <app-navbar></app-navbar>
    
    </ion-toolbar>
+
 
    <app-list-habitacion *ngFor="let habitacion of habitaciones " [habitacion$]="habitacion"></app-list-habitacion>
 
