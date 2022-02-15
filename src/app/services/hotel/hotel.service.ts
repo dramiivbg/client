@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Hotel } from 'src/app/model/hotel';
 import { environment } from 'src/environments/environment';
 import {map, catchError} from 'rxjs/operators';
+import { User } from 'src/app/model/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,8 @@ export class HotelService {
  public hotel$ = new Subject<Hotel>();
  public hoteles: Hotel[] = [];
  public hotel: Hotel;
+
+ public usuario: User;
   constructor(
     public http : HttpClient
   ) { }
@@ -72,6 +75,40 @@ export class HotelService {
 
      }));
 }
+
+
+
+
+
+ 
+getAdmin(id: any): Observable<any>{
+ 
+  this.usuario = new User();
+
+  return this.http.get<User>(this.url + '/usuario/'+ id)
+   .pipe(
+     map((res: any) => {
+
+      res['data']['hoteles'].forEach((item: any) => {
+
+        
+          
+ 
+        this.hotel = new Hotel();
+
+        this.hotel.set(item);
+      
+      
+        this.hotel$.next(this.hotel);
+      })   
+
+   
+    }));
+
+    
+    }
+
+
 
 
 create(hotel: Hotel){

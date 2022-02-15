@@ -2,20 +2,23 @@
 
 <ion-header [translucent]="true">
 
-  <title>admin</title>
+  <ion-toolbar>
+    <title>admin</title>
+  </ion-toolbar>
+
 
  
 </ion-header>
 
-<ion-toolbar>
-
- <app-menu></app-menu>
-
-  <app-navbar></app-navbar>
+  
+<ion-toolbar class="navigate">
+  <div class="flexp">
+    <ion-menu></ion-menu>
+    <ion-searchbar></ion-searchbar>
+    <app-navbar ></app-navbar>
+  </div>
 
 </ion-toolbar>
-
-  
 
 <ion-content [fullscreen]="true">
 
@@ -30,7 +33,7 @@
     
   </ion-header>
 
-  <app-hotel></app-hotel>
+  <app-hotel *ngFor="let hotel of hoteles" [hotel]="hotel" [loading]="loading"></app-hotel>
 </ion-content>
 
 

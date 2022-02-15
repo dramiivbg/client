@@ -37,7 +37,7 @@
     
   </ion-header>
 
-  <app-hotel></app-hotel>
+  <app-hotel *ngFor="let hotel of hoteles" [hotel]="hotel" [loading]="loading"></app-hotel>
 
 
 </ion-content>
