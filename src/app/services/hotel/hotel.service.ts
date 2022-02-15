@@ -116,7 +116,17 @@ create(hotel: Hotel){
  
 
   
-  return this.http.post<Hotel>(this.url + '/hotel',hotel);
+  return this.http.post<Hotel>(this.url + '/hotel',hotel)
+  .pipe(
+    map((res: any) => {
+
+      this.hotel = new Hotel();
+
+      this.hotel.set(res['data']);
+
+      this.hotel$.next(this.hotel);
+
+    }));
    
 }
 

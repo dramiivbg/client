@@ -97,7 +97,11 @@ export class CalificacionService {
    .pipe(
      map ((res: any) => {
 
-      res['data']
+      this.calificacion = new Calificacion();
+
+      this.calificacion.set(res['data']);
+
+      this.calificacion$.next(this.calificacion);
 
      }));
    

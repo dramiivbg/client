@@ -118,15 +118,16 @@ export class UserService {
            
 
         
-         // this.usuario.set(res);
+          this.usuario.set(res['data']);
 
 
+          this.usuario$.next(this.usuario);
 
         
       
       }));
 
-     // return this.usuario;
+   
  }
 
  delete(id: any){
