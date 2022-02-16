@@ -6,7 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HotelComponent } from './components/hotel/hotel.component';
+
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,8 +16,10 @@ import { HotelComponent } from './components/hotel/hotel.component';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    SharedModule
+    
     
   ],
-  declarations: [HomePage, NavbarComponent, HotelComponent]
+  declarations: [HomePage, NavbarComponent]
 })
 export class HomePageModule {}

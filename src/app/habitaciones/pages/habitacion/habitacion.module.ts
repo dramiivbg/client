@@ -8,17 +8,18 @@ import { HabitacionPageRoutingModule } from './habitacion-routing.module';
 
 import { HabitacionPage } from './habitacion.page';
 import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
-import { ListHabitacionComponent } from '../../components/list-habitacion/list-habitacion.component';
-import { MenuComponent } from 'src/app/administrador/components/menu/menu/menu.component';
-import { HotelComponent } from 'src/app/home/components/hotel/hotel.component';
+import { ListHabitacionComponent } from '../../../shared/list-habitacion/list-habitacion.component';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HabitacionPageRoutingModule
+    HabitacionPageRoutingModule,
+    SharedModule
   ],
-  declarations: [HabitacionPage, NavbarComponent, ListHabitacionComponent, MenuComponent, HotelComponent]
+  declarations: [HabitacionPage, NavbarComponent, ListHabitacionComponent]
 })
 export class HabitacionPageModule {}
