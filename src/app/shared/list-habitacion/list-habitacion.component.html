@@ -1,8 +1,6 @@
 
 
- <div *ngIf="loading">
-  <ion-progress-bar type="indeterminate"></ion-progress-bar>
-</div>
+
 
   <ion-card style="text-align: center;" >
 
@@ -15,7 +13,7 @@
   
     <ion-card-content>
 
-      <a [routerLink]="['/comentarios', habitacion$.id]" routerLinkActive="router-link-active">
+      <a >
 
         <img  src="assets/img/hotel.jpg" alt="hola" >
       </a>
@@ -25,16 +23,16 @@
 
       <div style="text-align: center;">
         <div class="ec-stars-wrapper " >
-          <a routerLink="/home"     >&#9733;</a>
-          <a routerLink="/home"    >&#9733;</a>
-          <a routerLink="/home"    >&#9733;</a>
-          <a routerLink="/home"    >&#9733;</a>
-          <a routerLink="/home"    >&#9733;</a>    
+          <a      >&#9733;</a>
+          <a    >&#9733;</a>
+          <a    >&#9733;</a>
+          <a    >&#9733;</a>
+          <a    >&#9733;</a>    
         </div>
         
         </div>
 
-        <ion-button expand="block" (click)="comentario()">ver comentarios </ion-button>
+        <ion-button [routerLink]="['/comentarios', habitacion$.id]" routerLinkActive="router-link-active" expand="block" >ver comentarios </ion-button>
 
   
   

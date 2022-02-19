@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Calificacion } from 'src/app/model/calificacion';
 import { Habitacion } from 'src/app/model/habitacion';
+import { CalificacionService } from 'src/app/services/calificacion/calificacion.service';
 import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
 
 @Component({
@@ -12,33 +14,29 @@ import { HabitacionService } from 'src/app/services/habitacion/habitacion.servic
 export class ListHabitacionComponent implements OnInit {
 
    @Input() habitacion$: Habitacion;
-  public habitacion: Habitacion;
+   @Input() calificaciones$: Calificacion[];
+
+ public cantidad:number[];
 
 
-  public loading = false;
-  constructor(  public router: Router) { }
+
+  constructor(  ) { }
 
   ngOnInit() {
 
-    
-    
-    if(!this.habitacion$){
-      this.loading = true;
-      }else{
-    
-        this.loading = false;
-      }
-    
+    console.log(this.calificaciones$);
+
+  
+      
+
+
+
+
+
+
+}
+
+
  
-
-  }
-
-
-  comentario(){
-
-
-    this.router.navigate(['/comentarios']);
-
-  }
 
 }

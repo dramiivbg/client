@@ -8,7 +8,6 @@ import { HabitacionPageRoutingModule } from './habitacion-routing.module';
 
 import { HabitacionPage } from './habitacion.page';
 import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
-import { ListHabitacionComponent } from '../../../shared/list-habitacion/list-habitacion.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -20,6 +19,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HabitacionPageRoutingModule,
     SharedModule
   ],
-  declarations: [HabitacionPage, NavbarComponent, ListHabitacionComponent]
+  declarations: [HabitacionPage, NavbarComponent]
 })
 export class HabitacionPageModule {}

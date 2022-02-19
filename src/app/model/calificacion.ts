@@ -5,6 +5,7 @@ export class Calificacion {
     public id_user: number;
     public calificacion: number;
     public comentario: string;
+    public nombres?: string;
 
     set(data: any){
 

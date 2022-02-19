@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HotelComponent } from './hotel/hotel.component';
-import { MenuComponent } from './menu/menu.component';
+
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ListHabitacionComponent } from './list-habitacion/list-habitacion.component';
 
 
 
 @NgModule({
-  declarations: [HotelComponent, MenuComponent],
+  declarations: [HotelComponent, ListHabitacionComponent],
   imports: [
    IonicModule, CommonModule, FormsModule,
    RouterModule
   ],
-  exports:[HotelComponent, MenuComponent]
+  exports:[HotelComponent, ListHabitacionComponent]
 })
 export class SharedModule { }

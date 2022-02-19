@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Calificacion } from 'src/app/model/calificacion';
-import { User } from 'src/app/model/user';
-import { UserService } from 'src/app/services/user/user.service';
+
 
 @Component({
   selector: 'app-list-comentarios',
@@ -12,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ListComentariosComponent implements OnInit {
 
   @Input() calificacion: Calificacion;
-  @Input() user: User;
+  
 
   public loading = false;
   

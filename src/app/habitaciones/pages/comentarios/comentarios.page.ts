@@ -17,7 +17,7 @@ export class ComentariosPage implements OnInit {
   public calificacionSubscripcion = new Subscription;
   public calificaciones: Calificacion[] = [];
 
-  
+  public index: number = 0;
   public userSubscripcion = new Subscription;
   public users$: User[] = [];
 
@@ -32,8 +32,10 @@ export class ComentariosPage implements OnInit {
 
       
 
-    this.users$.push(res);
+    this.calificaciones[this.index].nombres = res.nombres+' '+res.apellidos;
   
+    this.index++;
+    
     });
 
     
