@@ -109,8 +109,6 @@ getAdmin(id: any): Observable<any>{
     }
 
 
-
-
 create(hotel: Hotel){
 
  

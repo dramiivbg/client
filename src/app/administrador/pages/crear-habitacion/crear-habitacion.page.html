@@ -1,27 +1,58 @@
-<ion-header>
 
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+      
+      <ion-toolbar class="navigate">
+       
+      
+      </ion-toolbar>
+      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
 
+      <ion-item>
+        <ion-icon name="storefront"></ion-icon>&nbsp;
+        <a [routerLink]="['/admin']" routerLinkActive="router-link-active" > 
+        <ion-label>Home</ion-label>
+        </a>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="business"></ion-icon>&nbsp;
+       <a [routerLink]="['/crear-hotel']" routerLinkActive="router-link-active" > 
+        <ion-label>crear hotel</ion-label>
+
+      </a>
+      </ion-item>
+  
+     
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Inbox</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    
+    
+  
+  
+    <app-form-habitacion [hoteles$]="hoteles"></app-form-habitacion>
+  
+    
+  
  
-</ion-header>
-
-
-<ion-content [fullscreen]="true">
-
-  <ion-toolbar>
-    <app-navbar></app-navbar>
-  </ion-toolbar>
-
-  <ion-card style="text-align: center;">
-
-    <ion-card-content>
-
-  <app-form-habitacion></app-form-habitacion>
-
-  
-
-    </ion-card-content>
-  
-
-  </ion-card>
-</ion-content>
-
+  </ion-content>
+</div>

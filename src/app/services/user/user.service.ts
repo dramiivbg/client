@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import {map, catchError} from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Hotel } from 'src/app/model/hotel';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +88,7 @@ export class UserService {
     
  
  }
+
 
 
 

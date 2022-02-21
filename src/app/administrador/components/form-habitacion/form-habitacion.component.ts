@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Habitacion } from 'src/app/model/habitacion';
+import { Hotel } from 'src/app/model/hotel';
 
 @Component({
   selector: 'app-form-habitacion',
@@ -12,6 +13,8 @@ export class FormHabitacionComponent implements OnInit {
   public form: FormGroup;
   private image:any;
   public previsualizacion: string;
+
+  @Input() hoteles$: Hotel[];
  
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -24,7 +27,7 @@ export class FormHabitacionComponent implements OnInit {
       valor : new  FormControl(0, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]),
       descripcion: new FormControl('', [Validators.required, Validators.minLength(50)]),
       nombre : new  FormControl('', [Validators.required, Validators.minLength(3)]),
-      
+      id_hotel: new FormControl(0, [Validators.required] )
 
     });
   }
@@ -74,6 +77,7 @@ export class FormHabitacionComponent implements OnInit {
   create(data: Habitacion){
 
     data.img = this.previsualizacion;
+
   console.log(data);
   }
 

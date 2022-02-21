@@ -8,7 +8,22 @@
 
 <div novalidate [formGroup]="form"   #f="ngForm">
     
+<ion-item>
 
+  <ion-select interface="popover" formControlName="id_hotel" >
+    <ion-select-option value={{hotel.id}} *ngFor="let hotel of hoteles$">{{hotel.nombre}}</ion-select-option>
+   
+  </ion-select>
+
+
+</ion-item>
+
+  
+<div *ngIf="form.controls['id_hotel'].errors" >
+  <ion-text *ngIf="form.controls['id_hotel'].errors['required']" color="danger">*Campo requerido</ion-text>
+
+
+</div>
 
   <ion-item>
     
@@ -16,13 +31,7 @@
   
   
   </ion-item>
-  
-  <div *ngIf="form.controls['nombre'].errors" >
-    <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
-    <ion-text *ngIf="form.controls['nombre'].errors['minlength']" color="danger">*Debe tener almenos 3 letras</ion-text>
-  
-  
-  </div>
+
   
   
   <ion-item>
