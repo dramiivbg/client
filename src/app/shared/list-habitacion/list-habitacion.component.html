@@ -13,7 +13,7 @@
   
     <ion-card-content>
 
-      <a >
+      <a [routerLink]="['/comentarios', habitacion$.id]" routerLinkActive="router-link-active">
 
         <img  src="assets/img/hotel.jpg" alt="hola" >
       </a>
@@ -21,19 +21,23 @@
   
       <p><strong>valor: {{habitacion$.valor}}</strong> </p>
 
-      <div style="text-align: center;">
-        <div class="ec-stars-wrapper " >
-          <a      >&#9733;</a>
-          <a    >&#9733;</a>
-          <a    >&#9733;</a>
-          <a    >&#9733;</a>
-          <a    >&#9733;</a>    
-        </div>
+      <div class="valoracion">
+        <input id="radio1" type="radio" name="estrellas" value="5">
+        <label for="radio1">★</label>
+        <input id="radio2" type="radio" name="estrellas" value="4">
+        <label for="radio2">★</label>
+        <input id="radio3" type="radio" name="estrellas" value="3">
+        <label for="radio3">★</label>
+        <input id="radio4" type="radio" name="estrellas" value="2">
+        <label for="radio4">★</label>
+        <input id="radio5" type="radio" name="estrellas" value="1">
+        <label for="radio5">★</label>
+      </div>
+
+
+
         
-        </div>
-
-        <ion-button [routerLink]="['/comentarios', habitacion$.id]" routerLinkActive="router-link-active" expand="block" >ver comentarios </ion-button>
-
+        
   
   
     </ion-card-content>

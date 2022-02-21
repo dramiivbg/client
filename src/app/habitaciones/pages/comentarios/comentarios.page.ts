@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Calificacion } from 'src/app/model/calificacion';
+import { Habitacion } from 'src/app/model/habitacion';
 import { User } from 'src/app/model/user';
 import { CalificacionService } from 'src/app/services/calificacion/calificacion.service';
+import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -21,12 +23,30 @@ export class ComentariosPage implements OnInit {
   public userSubscripcion = new Subscription;
   public users$: User[] = [];
 
+  public habitacion: Habitacion;
 
-  constructor(public router: ActivatedRoute, public calificacionService: CalificacionService,public userService: UserService ) { }
+  public habitacionSubscripcion = new Subscription();
+
+  constructor(public router: ActivatedRoute, public calificacionService: CalificacionService,public userService: UserService,
+     public habitacionService: HabitacionService ) { }
 
   ngOnInit() {
 
   this.id =   this.router.snapshot.params.id;
+
+ this.habitacionSubscripcion =  this.habitacionService.get$().subscribe((res: Habitacion) => {
+
+  this.habitacion = new Habitacion();
+  
+    this.habitacion.set(res);
+
+  });
+
+  this.habitacionService.get(this.id).subscribe(res => {
+
+    console.log('lsto');
+
+  });
 
   this.userSubscripcion =   this.userService.get$().subscribe((res:User) => {
 

@@ -11,7 +11,7 @@
 
 <div *ngIf="form.controls['nombre'].errors" >
   <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
-  <ion-text *ngIf="form.controls['nombre'].errors['minlength']" color="danger">*Debe tener almenos 3 letras</ion-text>
+  <ion-text *ngIf="form.controls['nombre'].errors['minLength']" color="danger">*Debe tener almenos 3 letras</ion-text>
 
 
 </div>

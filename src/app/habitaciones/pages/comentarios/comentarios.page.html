@@ -65,7 +65,7 @@
     
     
   
-    <app-list-comentarios *ngFor="let calificacion of calificaciones"  [calificacion]="calificacion"  ></app-list-comentarios>
+    <app-list-comentarios [calificaciones]="calificaciones"  [habitacion$]="habitacion" ></app-list-comentarios>
 
 
   </ion-content>

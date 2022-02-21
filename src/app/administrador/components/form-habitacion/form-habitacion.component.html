@@ -32,6 +32,12 @@
   
   </ion-item>
 
+  <div *ngIf="form.controls['nombre'].errors">
+    <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['nombre'].errors['minLength']" color="danger">*campo numerico</ion-text>
+  
+  
+  </div>
   
   
   <ion-item>

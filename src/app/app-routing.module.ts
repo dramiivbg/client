@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./habitaciones/pages/habitacion/habitacion.module').then(m => m.HabitacionPageModule)
   },
   {
-    path: 'calificacion',
+    path: 'calificacion/:id',
     loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule)
   },
   {

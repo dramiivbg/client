@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Calificacion } from 'src/app/model/calificacion';
+import { Habitacion } from 'src/app/model/habitacion';
 
 
 @Component({
@@ -12,6 +13,9 @@ export class ListComentariosComponent implements OnInit {
 
   @Input() calificacion: Calificacion;
   
+  @Input() habitacion$: Habitacion;
+
+  @Input() calificaciones: Calificacion[];
 
   public loading = false;
   
