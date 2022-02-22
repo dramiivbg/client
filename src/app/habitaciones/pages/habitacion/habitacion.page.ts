@@ -13,10 +13,18 @@ import { HabitacionService } from 'src/app/services/habitacion/habitacion.servic
 })
 export class HabitacionPage implements OnInit {
 
-  public index: number = 0;
-  public suma: number = 0;
+  public index: number ;
+  public suma: number;
   public id: number;
+
+  public global:number;
+
+  public len: number;
+
+  public pos: number;
   public habitaciones: Habitacion[] = [];
+  public calificacion: Calificacion;
+  public habitacion: Habitacion;
   public cantidad: number = 0;
   public loading = false;
   public habitacionSuscripcion = new Subscription();
@@ -28,56 +36,79 @@ export class HabitacionPage implements OnInit {
 
   ngOnInit() {
 
-   
- this.id =    this.route.snapshot.params.id;
+this.habitacion = new Habitacion();
+
+this.habitacion.cantidad = 0;
+this.index = 0;
+
+this.suma = 0;
+
+
+this.calificacion = new Calificacion();
+
+this.calificacion.cantidad = 0;
+
+this.len = 0;
+
+this.global = 0;
+
+this.pos = 0;
+
+this.id =    this.route.snapshot.params.id;
 
  this.calificacionSubscripcion =  this.calificacionService.get$().subscribe((res: Calificacion) => {
 
-
-  if(this.habitaciones[this.index].id == res.id_habitacion){
-
-  this.suma+= res.calificacion;
-
-  this.cantidad++;
-
-  }
-
-  this.habitaciones[this.index].calificacion = this.suma/this.cantidad;
-
- 
-
-});
 
 this.index++;
 
+this.calificacion.cantidad += this.index;
 
- this.calificacionSubscripcion =  this.calificacionService.get$().subscribe((res: Calificacion) => {
+this.calificaciones.push(res);
 
-
-  if(this.habitaciones[this.index].id == res.id_habitacion){
-
-  this.suma+= res.calificacion;
-
-  this.cantidad++;
-
-  }
-
-  this.habitaciones[this.index].calificacion = this.suma/this.cantidad;
-
-  
-
- 
 
 });
 
-console.log('calificaciones', this.habitaciones);
 
 
+/*
+
+for (let index = 0; index < this.habitacion.cantidad; index++) {
+  
+
+   for (let pos = 0; pos < this.calificacion.cantidad; pos++) {
+ 
+    if (this.habitaciones[index].id ==  this.calificaciones[pos].id_habitacion) {
+    
+       this.len++;
+      this.habitacion.calificacion += this.calificaciones[pos].calificacion;
+
+      this.calificacion.cantidad = this.len;
+
+
+
+    }
+
+    this.habitaciones[index].calificacion = this.habitacion.calificacion/this.calificacion.cantidad;
+
+
+    console.log('habitaciones =>',this.habitaciones[index]);
+
+
+
+   }
+
+  
+}
+
+*/
 
  this.habitacionSuscripcion = this.habitacionService.get$().subscribe((res: Habitacion) => {
 
+   this.pos++;
 
+   this.habitacion.cantidad+= this.pos;
 
+  
    this.habitaciones.push(res);
 
    this.getCalificaciones(res);
@@ -88,6 +119,10 @@ console.log('calificaciones', this.habitaciones);
 
 
  });
+
+ console.log(this.habitacion);
+
+console.log(this.calificacion);
 
  
  this.habitacionService.get(this.id).subscribe( res => {

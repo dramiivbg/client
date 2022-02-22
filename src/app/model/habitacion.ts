@@ -9,6 +9,7 @@ export class Habitacion {
     public descripcion: string;
     public img: string;
     public calificacion?: number;
+    public cantidad?:number;
 
     set(data: any){
         this.id = data.id;

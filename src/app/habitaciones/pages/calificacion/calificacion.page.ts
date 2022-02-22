@@ -8,16 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CalificacionPage implements OnInit {
 
-  public id: number;
 
-  constructor(public router: ActivatedRoute) { }
+
+  constructor() { }
 
   ngOnInit() {
     
-  this.id =   this.router.snapshot.params.id;
 
-
-  console.log(this.id);
 
 
   }

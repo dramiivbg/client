@@ -1,0 +1,46 @@
+<div novalidate [formGroup]="form"   #f="ngForm">
+  <ion-item>
+
+
+    <p class="clasificacion">
+      <input id="radio1" formControlName="calificacion" type="radio"  value="5"><!--
+      --><label for="radio1">★</label><!--
+      --><input id="radio2" formControlName="calificacion" type="radio"  value="4"><!--
+      --><label for="radio2">★</label><!--
+      --><input id="radio3" formControlName="calificacion" type="radio"  value="3"><!--
+      --><label for="radio3">★</label><!--
+      --><input id="radio4" formControlName="calificacion" type="radio"  value="2"><!--
+      --><label for="radio4">★</label><!--
+      --><input id="radio5" formControlName="calificacion" type="radio"  value="1"><!--
+      --><label for="radio5">★</label>
+    </p>
+  </ion-item>
+
+  <div *ngIf="form.controls['calificacion'].errors">
+    <ion-text *ngIf="form.controls['calificacion'].errors['required']" color="danger">*Campo requerido</ion-text>
+
+  
+  </div>
+
+  <ion-item>
+
+    <ion-textarea formControlName="comentario" placeholder="haga su comentario porfavor">
+
+
+    </ion-textarea>
+  </ion-item>
+
+  <div *ngIf="form.controls['comentario'].errors">
+    <ion-text *ngIf="form.controls['comentario'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['comentario'].errors['minLength']" color="danger">*campo numerico</ion-text>
+  
+  
+  </div>
+
+
+   
+  <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="create(form.value)">calificar</ion-button>
+  
+  
+
+</div>

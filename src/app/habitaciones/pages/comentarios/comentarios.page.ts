@@ -32,6 +32,7 @@ export class ComentariosPage implements OnInit {
 
   ngOnInit() {
 
+    this.id = 0;
   this.id =   this.router.snapshot.params.id;
 
  this.habitacionSubscripcion =  this.habitacionService.get$().subscribe((res: Habitacion) => {

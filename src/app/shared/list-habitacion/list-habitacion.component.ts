@@ -24,7 +24,7 @@ export class ListHabitacionComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.calificaciones$);
+  
 
   
       
