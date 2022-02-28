@@ -11,11 +11,12 @@ import { Habitacion } from 'src/app/model/habitacion';
 })
 export class ListComentariosComponent implements OnInit {
 
-  @Input() calificacion: Calificacion;
   
-  @Input() habitacion$: Habitacion;
+  public bolean: boolean = true;
 
-  @Input() calificaciones: Calificacion[];
+  @Input() habitacion$: Habitacion ;
+
+  @Input() calificaciones: Calificacion[] = [];
 
   public loading = false;
   
@@ -23,14 +24,24 @@ export class ListComentariosComponent implements OnInit {
 
   ngOnInit() {
 
-     
-    if(!this.calificacion){
-      this.loading = true;
-      }else{
     
-        this.loading = false;
-      }
 
+    console.log(this.calificaciones);
+
+    this.habitacion$ = new Habitacion();
+
+ 
+
+   if(this.habitacion$ == undefined){
+
+    this.bolean = false;
+   }
+   else{
+
+    this.bolean = true;
+   }
+    
+    
 
   }
   

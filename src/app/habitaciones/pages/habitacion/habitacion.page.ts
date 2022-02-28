@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, ActivationEnd } from '@angular/router';
+
 import { EMPTY, Subscription } from 'rxjs';
 import { Calificacion } from 'src/app/model/calificacion';
 import { Habitacion } from 'src/app/model/habitacion';
 import { CalificacionService } from 'src/app/services/calificacion/calificacion.service';
 import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
+
 
 @Component({
   selector: 'app-habitacion',
@@ -13,6 +16,7 @@ import { HabitacionService } from 'src/app/services/habitacion/habitacion.servic
 })
 export class HabitacionPage implements OnInit {
 
+ 
   public index: number ;
   public suma: number;
   public id: number;
@@ -29,12 +33,20 @@ export class HabitacionPage implements OnInit {
   public loading = false;
   public habitacionSuscripcion = new Subscription();
 
+  public entrada: string;
+
+
   public calificaciones: Calificacion[] = [];
+
+  
 
   public calificacionSubscripcion = new Subscription();
   constructor(public route: ActivatedRoute,public calificacionService: CalificacionService, public habitacionService: HabitacionService) { }
 
   ngOnInit() {
+
+
+
 
 this.habitacion = new Habitacion();
 
@@ -59,14 +71,21 @@ this.id =    this.route.snapshot.params.id;
  this.calificacionSubscripcion =  this.calificacionService.get$().subscribe((res: Calificacion) => {
 
 
+
+
+this.calificaciones.push(res);
+
 this.index++;
 
 this.calificacion.cantidad += this.index;
 
-this.calificaciones.push(res);
+
 
 
 });
+
+console.log(this.calificaciones.length);
+
 
 
 
@@ -120,9 +139,9 @@ for (let index = 0; index < this.habitacion.cantidad; index++) {
 
  });
 
- console.log(this.habitacion);
+ //console.log(this.habitacion);
 
-console.log(this.calificacion);
+//console.log(this.calificacion);
 
  
  this.habitacionService.get(this.id).subscribe( res => {
@@ -149,6 +168,15 @@ this.calificacionService.get(habitacion.id).subscribe(res => {
 
 
 
+
+  }
+
+
+
+  event(entrada: any){
+
+
+    console.log(entrada);
 
   }
 

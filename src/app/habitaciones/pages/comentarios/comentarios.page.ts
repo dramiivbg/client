@@ -19,6 +19,7 @@ export class ComentariosPage implements OnInit {
   public calificacionSubscripcion = new Subscription;
   public calificaciones: Calificacion[] = [];
 
+ 
   public index: number = 0;
   public userSubscripcion = new Subscription;
   public users$: User[] = [];
@@ -33,22 +34,30 @@ export class ComentariosPage implements OnInit {
   ngOnInit() {
 
     this.id = 0;
+
   this.id =   this.router.snapshot.params.id;
 
- this.habitacionSubscripcion =  this.habitacionService.get$().subscribe((res: Habitacion) => {
+  
+  this.habitacionSubscripcion =  this.habitacionService.get$().subscribe((res: Habitacion) => {
+
+
 
   this.habitacion = new Habitacion();
   
-    this.habitacion.set(res);
+  this.habitacion.set(res);
+
+  
+
 
   });
 
-  this.habitacionService.get(this.id).subscribe(res => {
+  this.habitacionService.getH(this.id).subscribe(res => {
 
     console.log('lsto');
 
   });
 
+  /*
   this.userSubscripcion =   this.userService.get$().subscribe((res:User) => {
 
       
@@ -58,20 +67,26 @@ export class ComentariosPage implements OnInit {
     this.index++;
     
     });
-
+*/
     
   this.calificacionSubscripcion = this.calificacionService.get$().subscribe((res: Calificacion) => {
 
 
      this.calificaciones.push(res);
 
-    this.users(res);
+
+   // this.users(res);
 
    
  });
 
+ 
+
+ /*
  console.log('calificaciones => ', this.calificaciones);
  console.log('users => ', this.users$);
+
+ */
 
   this.calificacionService.get(this.id).subscribe(res => {
 

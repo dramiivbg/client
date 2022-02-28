@@ -87,16 +87,16 @@ export class FormHotelComponent implements OnInit {
 
     console.log(data);
 
-    this.router.navigate(['/crear-habitacion']);
+   // this.router.navigate(['/crear-habitacion']);
   
-/*
+
     this.hotelService.create(data).subscribe((res: any) => {
 
       this.router.navigate(['/crear-habitacion']);
         
     });
     
-  */
+  
   }
 
 

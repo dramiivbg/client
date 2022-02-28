@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Habitacion } from 'src/app/model/habitacion';
 import { Hotel } from 'src/app/model/hotel';
+import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
 
 @Component({
   selector: 'app-form-habitacion',
@@ -16,7 +17,7 @@ export class FormHabitacionComponent implements OnInit {
 
   @Input() hoteles$: Hotel[];
  
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, public habitacionService: HabitacionService) { }
 
 
   ngOnInit() {
@@ -79,6 +80,15 @@ export class FormHabitacionComponent implements OnInit {
     data.img = this.previsualizacion;
 
   console.log(data);
+
+
+  this.habitacionService.create(data).subscribe(res => {
+
+    console.log('listo');
+
+  });
+
+
   }
 
 

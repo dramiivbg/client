@@ -57,6 +57,31 @@ export class HabitacionService {
   }
  
   
+  getH(id:any):Observable<any>{
+
+    this.habitacion = new Habitacion();
+   return this.http.get<Habitacion>(this.url + '/habitacion/'+ id)
+    .pipe(
+      map((res: any) => {
+
+ 
+          this.habitacion = new Habitacion();
+
+
+       
+          this.habitacion.set(res['data']);
+        
+         
+          
+
+          this.habitacion$.next(this.habitacion);
+          
+
+  
+        
+      }));
+
+  }
  
   get(id: any): Observable<any>{
  
@@ -75,8 +100,12 @@ export class HabitacionService {
 
           this.habitacion.set(item);
         
-        
+          
+
           this.habitacion$.next(this.habitacion);
+          
+
+  
         });
       }));
  }

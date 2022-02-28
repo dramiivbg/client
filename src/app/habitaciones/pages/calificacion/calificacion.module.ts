@@ -8,6 +8,7 @@ import { CalificacionPageRoutingModule } from './calificacion-routing.module';
 
 import { CalificacionPage } from './calificacion.page';
 import { CalificarComponent } from '../../components/calificar/calificar.component';
+import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { CalificarComponent } from '../../components/calificar/calificar.compone
     CalificacionPageRoutingModule,
     FormsModule, ReactiveFormsModule
   ],
-  declarations: [CalificacionPage,CalificarComponent ]
+  declarations: [CalificacionPage,CalificarComponent, NavbarComponent ]
 })
 export class CalificacionPageModule {}
