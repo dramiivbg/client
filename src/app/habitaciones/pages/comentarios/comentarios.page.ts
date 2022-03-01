@@ -57,7 +57,7 @@ export class ComentariosPage implements OnInit {
 
   });
 
-  /*
+  
   this.userSubscripcion =   this.userService.get$().subscribe((res:User) => {
 
       
@@ -67,7 +67,7 @@ export class ComentariosPage implements OnInit {
     this.index++;
     
     });
-*/
+
     
   this.calificacionSubscripcion = this.calificacionService.get$().subscribe((res: Calificacion) => {
 
@@ -75,7 +75,7 @@ export class ComentariosPage implements OnInit {
      this.calificaciones.push(res);
 
 
-   // this.users(res);
+    this.users(res);
 
    
  });
@@ -110,7 +110,7 @@ export class ComentariosPage implements OnInit {
   
 
 
-this.userService.get(calificacion.id).subscribe(res => {
+this.userService.get(calificacion.id_user).subscribe(res => {
 
   console.log('listo');
 })

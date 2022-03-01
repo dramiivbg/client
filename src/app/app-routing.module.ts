@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: () => import('./usuario/pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+  {
+    path: 'historial-comentario',
+    loadChildren: () => import('./usuario/pages/historial-comentario/historial-comentario.module').then( m => m.HistorialComentarioPageModule)
+  },
   
 
  

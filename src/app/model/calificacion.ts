@@ -5,6 +5,7 @@ export class Calificacion {
     public id_user: number;
     public calificacion: number;
     public comentario: string;
+    public fecha: string;
     public nombres?: string;
     public cantidad?: number;
 
@@ -15,6 +16,7 @@ export class Calificacion {
         this.id_user = data.id_user;
         this.calificacion = data.calificacion;
         this.comentario = data.comentario;
+        this.fecha = data.fecha;
     }
 
 }

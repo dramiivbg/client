@@ -11,34 +11,18 @@
 
   <ion-item>
     <ion-avatar slot="start">
-      <img src="./avatar-finn.png" />
+      <ion-icon name="person-circle"></ion-icon>
     </ion-avatar>
     <ion-label>
-     {{calificacion.nombres}}
-      <h3>I'm a big deal</h3>
+      <h3>  {{calificacion.nombres}}</h3>
+      <p>{{calificacion.fecha}}<p>
       <p>{{calificacion.comentario}}</p>
     </ion-label>
   </ion-item>
 
+
+
 </ion-list>
 
 </div>
-
-
-<script>
-  const searchbar = document.querySelector('ion-searchbar');
-  const items = Array.from(document.querySelector('ion-list').children);
-
-  searchbar.addEventListener('ionInput', handleInput);
-
-  function handleInput(event) {
-    const query = event.target.value.toLowerCase();
-    requestAnimationFrame(() => {
-      items.forEach((item) => {
-        const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
-        item.style.display = shouldShow ? 'block' : 'none';
-      });
-    });
-  }
-</script>
 
