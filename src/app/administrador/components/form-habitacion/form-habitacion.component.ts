@@ -77,16 +77,11 @@ export class FormHabitacionComponent implements OnInit {
 
   create(data: Habitacion){
 
-    data.img = this.previsualizacion;
 
-  console.log(data);
+ 
 
 
-  this.habitacionService.create(data).subscribe(res => {
-
-    console.log('listo');
-
-  });
+  this.habitacionService.preAddAndUpdate(data, this.image);
 
 
   }

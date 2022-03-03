@@ -42,11 +42,11 @@ export class FormHotelComponent implements OnInit {
 
      // console.log(imagen)
     })
-    //this.archivos.push(this.image);
-   // console.log(this.archivos);
+   
   
   }
 
+  
   extraerBase64 = async ($event:any) => new Promise((resolve, reject) =>  {
     
 
@@ -76,25 +76,20 @@ export class FormHotelComponent implements OnInit {
 
 
 
+
+
   create(data: Hotel){
 
     
   
 
   
-    data.img = this.previsualizacion;
-    data.id_admin = 5;
+    data.id_admin = 37;
 
-    console.log(data);
+    
 
-   // this.router.navigate(['/crear-habitacion']);
-  
 
-    this.hotelService.create(data).subscribe((res: any) => {
-
-      this.router.navigate(['/crear-habitacion']);
-        
-    });
+    this.hotelService.preAddAndUpdate(data, this.image);
     
   
   }

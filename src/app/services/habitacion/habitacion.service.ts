@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {map, catchError} from 'rxjs/operators';
+import {map, catchError, finalize} from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { Habitacion } from 'src/app/model/habitacion';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Injectable({
@@ -16,8 +17,10 @@ export class HabitacionService {
   public habitacion$ = new Subject<Habitacion>();
   public habitaciones: Habitacion[] = [];
   public habitacion: Habitacion;
+
+  private filePath: any;
    constructor(
-     public http : HttpClient
+     public http : HttpClient,  private storage: AngularFireStorage
    ) { }
  
    all$(): Observable<Habitacion[]>{
@@ -111,6 +114,38 @@ export class HabitacionService {
  }
 
  
+ public preAddAndUpdate(habitacion: Habitacion, image:File){
+
+  this.uploadImage(habitacion,image);
+  }
+
+
+  private  uploadImage(habitacion:Habitacion,image:File){
+    this.filePath = `images/${image.name}`;
+     const fileRef = this.storage.ref(this.filePath);
+     const task = this.storage.upload(this.filePath, image);
+     task.snapshotChanges()
+     .pipe(
+       finalize(() =>{
+         fileRef.getDownloadURL().subscribe( urlImage => {
+         habitacion.img = urlImage;
+
+        
+
+          this.create(habitacion);
+  
+         //call addPost()
+  
+  
+         });
+       })
+     ).subscribe();
+    }
+
+
+
+
+ 
  
  create(habitacion: Habitacion){
  
@@ -126,7 +161,7 @@ export class HabitacionService {
       this.habitacion.set(res['data']);
       this.habitacion$.next(this.habitacion);
 
-     }));
+     })).subscribe(res => { });
     
  }
 }

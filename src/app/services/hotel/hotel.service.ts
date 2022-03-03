@@ -3,8 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Hotel } from 'src/app/model/hotel';
 import { environment } from 'src/environments/environment';
-import {map, catchError} from 'rxjs/operators';
+import {map, catchError, finalize} from 'rxjs/operators';
 import { User } from 'src/app/model/user';
+
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,9 +20,11 @@ export class HotelService {
  public hoteles: Hotel[] = [];
  public hotel: Hotel;
 
+ private filePath: any;
+
  public usuario: User;
   constructor(
-    public http : HttpClient
+    public http : HttpClient,  private storage: AngularFireStorage, public router: Router
   ) { }
 
   all$(): Observable<Hotel[]>{
@@ -109,14 +116,48 @@ getAdmin(id: any): Observable<any>{
     }
 
 
-create(hotel: Hotel){
+    
+  public preAddAndUpdate(hotel: Hotel, image:File){
 
- 
+    this.uploadImage(hotel,image);
+    }
+
+
+    private  uploadImage(hotel:Hotel,image:File){
+      this.filePath = `images/${image.name}`;
+       const fileRef = this.storage.ref(this.filePath);
+       const task = this.storage.upload(this.filePath, image);
+       task.snapshotChanges()
+       .pipe(
+         finalize(() =>{
+           fileRef.getDownloadURL().subscribe( urlImage => {
+           hotel.img = urlImage;
+
+          
+
+            this.create(hotel);
+    
+           //call addPost()
+    
+    
+           });
+         })
+       ).subscribe();
+      }
+
+
+
+
+ create(hotel: Hotel){
+
+
+  
 
   
   return this.http.post<Hotel>(this.url + '/hotel',hotel)
   .pipe(
     map((res: any) => {
+
 
       this.hotel = new Hotel();
 
@@ -124,7 +165,10 @@ create(hotel: Hotel){
 
       this.hotel$.next(this.hotel);
 
-    }));
+      this.router.navigate(['/crear-habitacion']);
+
+    })).subscribe(res => { this.router.navigate(['/crear-habitacion']);
+  });
    
 }
 
