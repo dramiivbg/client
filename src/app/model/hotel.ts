@@ -13,6 +13,7 @@ export class Hotel {
         this.id_admin = data.id_admin;
         this.nombre = data.nombre;
         this.direccion = data.direccion;
+        this.img = data.img;
 
     }
 }

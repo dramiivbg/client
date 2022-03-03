@@ -84,7 +84,7 @@ export class FormHotelComponent implements OnInit {
   
 
   
-    data.id_admin = 37;
+    data.id_admin = 1;
 
     
 

@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
     
        
      
-     this.hotelService.getAdmin(37).subscribe(res => {
+     this.hotelService.getAdmin(1).subscribe(res => {
  
        console.log('listo');
  

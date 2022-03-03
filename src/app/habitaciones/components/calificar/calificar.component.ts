@@ -46,7 +46,7 @@ export class CalificarComponent implements OnInit {
 
   data.id_habitacion = this.id;
 
-  data.id_user = 27;
+  data.id_user = 1;
 
   this.fecha = new Date();
 

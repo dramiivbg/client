@@ -27,7 +27,7 @@ export class CrearHabitacionPage implements OnInit {
     });
 
 
-    this.hotelService.getAdmin(18).subscribe(res => {
+    this.hotelService.getAdmin(1).subscribe(res => {
 
       console.log('listo');
 
