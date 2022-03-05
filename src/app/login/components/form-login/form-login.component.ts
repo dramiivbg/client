@@ -4,6 +4,11 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user/user.service';
 import * as crypto from 'crypto-js'; 
+import { Perfil } from 'src/app/model/perfil';
+import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-form-login',
   templateUrl: './form-login.component.html',
@@ -12,13 +17,13 @@ import * as crypto from 'crypto-js';
 export class FormLoginComponent implements OnInit {
 
 
-
+  
   public users: User[];
   public form: FormGroup;
-
+  public perfil: Perfil;
   public contador:number = 0;
   public userSubscripcion = new Subscription();
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit() {
 
@@ -49,13 +54,35 @@ export class FormLoginComponent implements OnInit {
 
 
           localStorage.setItem('id', String(res[index].id));
-          
+
+
           console.log('login exitosamente');
+
+        this.perfil = new Perfil();
+
+        this.perfil.set(res[index]['perfil']);
+
+        switch(this.perfil.rol){
+
+          case 'user': this.router.navigate(['/home']); break;
+
+          case 'admin': this.router.navigate(['/admin']); break;
+
+        }
 
           
         }else{
 
-          console.log('login fallido');
+          Swal.fire({
+            title: 'credenciales incorrectas',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+         
         }
         
          

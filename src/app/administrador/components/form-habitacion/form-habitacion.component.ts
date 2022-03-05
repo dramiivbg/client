@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Habitacion } from 'src/app/model/habitacion';
 import { Hotel } from 'src/app/model/hotel';
 import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form-habitacion',

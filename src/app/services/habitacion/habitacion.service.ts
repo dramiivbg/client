@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { Habitacion } from 'src/app/model/habitacion';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -161,7 +162,17 @@ export class HabitacionService {
       this.habitacion.set(res['data']);
       this.habitacion$.next(this.habitacion);
 
-     })).subscribe(res => { });
+     })).subscribe(res => {
+      Swal.fire({
+        title: 'creada correctamente',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+      });
     
  }
 }

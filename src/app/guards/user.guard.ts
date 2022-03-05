@@ -8,9 +8,10 @@ import { UserService } from '../services/user/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class UserGuard implements CanActivate {
 
 
+  
   public user: User;
   public active: boolean = false;
 
@@ -19,6 +20,7 @@ export class AdminGuard implements CanActivate {
   public uid:string = '';
 
   public userSubscripcion = new Subscription();
+
   constructor(private userSvc: UserService,
     private router: Router){
 
@@ -46,9 +48,9 @@ comprobarVendedor(){
 
     switch(this.perfil.rol){
 
-      case 'admin': this.active = true; break;
+      case 'admin': this.router.navigate(['/admin']); break;
 
-      case 'user' : this.router.navigate(['/home']); break;
+      case 'user' :  this.active = true; break;
 
       default: this.router.navigate(['/login']); break;
 
@@ -74,9 +76,6 @@ comprobarVendedor(){
   }
   
 }
-
-
-
 
   canActivate(
     route: ActivatedRouteSnapshot,

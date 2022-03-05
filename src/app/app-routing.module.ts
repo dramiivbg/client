@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
+import { UserGuard } from './guards/user.guard';
 import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
@@ -15,15 +17,18 @@ const routes: Routes = [
   
   {
     path: 'admin',
-    loadChildren: () => import('./administrador/pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./administrador/pages/home/home.module').then( m => m.HomePageModule),
+    canActivate:[AdminGuard]
   },
   {
     path: 'crear-hotel',
-    loadChildren: () => import('./administrador/pages/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule)
+    loadChildren: () => import('./administrador/pages/crear-hotel/crear-hotel.module').then( m => m.CrearHotelPageModule),
+    canActivate:[AdminGuard]
   },
   {
     path: 'crear-habitacion',
-    loadChildren: () => import('./administrador/pages/crear-habitacion/crear-habitacion.module').then( m => m.CrearHabitacionPageModule)
+    loadChildren: () => import('./administrador/pages/crear-habitacion/crear-habitacion.module').then( m => m.CrearHabitacionPageModule),
+    canActivate:[AdminGuard]
   },
   {
     path: 'login',
@@ -53,7 +58,16 @@ const routes: Routes = [
   },
   {
     path: 'historial-comentario',
-    loadChildren: () => import('./usuario/pages/historial-comentario/historial-comentario.module').then( m => m.HistorialComentarioPageModule)
+    loadChildren: () => import('./usuario/pages/historial-comentario/historial-comentario.module').then( m => m.HistorialComentarioPageModule),
+    canActivate:[UserGuard]
+  },
+  {
+    path: 'verify',
+    loadChildren: () => import('./usuario/pages/verify/verify.module').then( m => m.VerifyPageModule)
+  },
+  {
+    path: 'send',
+    loadChildren: () => import('./usuario/pages/send/send.module').then( m => m.SendPageModule)
   },
   
 

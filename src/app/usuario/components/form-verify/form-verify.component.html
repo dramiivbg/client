@@ -1,0 +1,38 @@
+
+
+
+<div novalidate [formGroup]="form"    #f="ngForm" >
+    
+ 
+
+
+  <ion-item>
+    <ion-icon name="mail-outline"></ion-icon>&nbsp;
+    <ion-input formControlName="email" placeholder="gmail"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['email'].errors" >
+    <ion-text *ngIf="form.controls['email'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['email'].errors['email']" color="danger">*Ingresa correo electronico</ion-text>
+
+  
+  </div>
+
+
+
+   
+
+
+  
+
+  
+    
+  <section>
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="send()">send</ion-button>
+  </section>
+
+
+  
+  
+  
+  </div>
