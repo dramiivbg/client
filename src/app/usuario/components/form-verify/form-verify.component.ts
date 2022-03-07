@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Verify } from 'crypto';
+import { Verifi } from 'src/app/model/verify';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-form-verify',
@@ -10,9 +13,9 @@ export class FormVerifyComponent implements OnInit {
 
   public form: FormGroup;
 
-  public email: string;
+  public verify: Verifi;
 
-  constructor() { }
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -30,9 +33,19 @@ export class FormVerifyComponent implements OnInit {
 
   send(){
 
-this.email = this.form.get('email').value;
+    this.verify = new Verifi();
 
-console.log(this.email);
+this.verify.gmail = this.form.get('email').value;
+
+this.verify.codigo = Math.floor(Math.random() * 100000);
+
+  
+
+this.messageService.sendMessage(this.verify).subscribe(res => {
+
+  console.log(res);
+  
+})
 
 
   }

@@ -8,15 +8,17 @@ import { ComentariosPageRoutingModule } from './comentarios-routing.module';
 
 import { ComentariosPage } from './comentarios.page';
 import { ListComentariosComponent } from '../../components/list-comentarios/list-comentarios.component';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ComentariosPageRoutingModule
+    ComentariosPageRoutingModule,
+    SharedModule
   ],
-  declarations: [ComentariosPage, ListComentariosComponent, NavbarComponent]
+  declarations: [ComentariosPage, ListComentariosComponent]
 })
 export class ComentariosPageModule {}

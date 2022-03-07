@@ -84,7 +84,7 @@ export class FormHotelComponent implements OnInit {
   
 
   
-    data.id_admin = 1;
+    data.id_admin = Number(localStorage.getItem('id'));
 
     
 

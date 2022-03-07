@@ -64,16 +64,16 @@ export class PerfilService {
       map((res: any[]) => {
  
  
-        if(res.length >0){
-        res['data'].forEach((item: any) => {
+        
+       
  
           this.perfil = new Perfil();
-          this.perfil.set(item);
+          this.perfil.set( res['data']);
         
  
-        });
+        
  
-    }
+    
         this.perfil$.next(this.perfil);
  
       }));

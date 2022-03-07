@@ -7,7 +7,7 @@ import { IonicModule, MenuController } from '@ionic/angular';
 import { HabitacionPageRoutingModule } from './habitacion-routing.module';
 
 import { HabitacionPage } from './habitacion.page';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -18,8 +18,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     HabitacionPageRoutingModule,
     SharedModule,
-    ReactiveFormsModule, FormsModule
+    ReactiveFormsModule, FormsModule,
+    SharedModule
   ],
-  declarations: [HabitacionPage, NavbarComponent]
+  declarations: [HabitacionPage]
 })
 export class HabitacionPageModule {}

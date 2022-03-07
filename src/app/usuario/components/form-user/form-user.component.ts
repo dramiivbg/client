@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import { Perfil } from 'src/app/model/perfil';
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-user',
@@ -81,7 +81,7 @@ this.user.email = this.form.get('email').value;
 
 this.key = this.form.get('password').value;
 
-this.user.password =  crypto.SHA512(this.key).toString();
+this.user.password =  crypto.AES.encrypt(this.key,'salt').toString();
 
 
 
@@ -104,7 +104,17 @@ this.user.password =  crypto.SHA512(this.key).toString();
 
   this.perfilService.create(this.perfil).subscribe(res =>{
 
-   console.log('creado perfil exitosamente');
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    }).then(() => {
+
+      this.router.navigate(['/login']);
+
+    })
 
   });
 

@@ -7,6 +7,7 @@ import { Habitacion } from 'src/app/model/habitacion';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class HabitacionService {
 
   private filePath: any;
    constructor(
-     public http : HttpClient,  private storage: AngularFireStorage
+     public http : HttpClient,  private storage: AngularFireStorage, public router: Router
    ) { }
  
    all$(): Observable<Habitacion[]>{
@@ -164,14 +165,19 @@ export class HabitacionService {
 
      })).subscribe(res => {
       Swal.fire({
-        title: 'creada correctamente',
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
+        title: 'quieres crear otro?',
+        text: "creado correctamente",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (!result.isConfirmed) {
+        
+          this.router.navigate(['/admin']);
         }
-      });
+      })
       });
     
  }

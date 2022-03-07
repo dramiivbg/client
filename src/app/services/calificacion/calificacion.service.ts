@@ -77,15 +77,45 @@ export class CalificacionService {
        }));
   }
  
- set(calificaciones: Calificacion[]){
+  getCalificaciones(id: any): Observable<any>{
+ 
+    this.calificacion = new Calificacion();
+ 
+    return this.http.get<Calificacion>(this.url + '/usuario/'+ id)
+     .pipe(
+       map((res: any) => {
+  
+  
+       
+       
+  
+        res['data']['calificaciones'].forEach((item: any) => {
+ 
+         
+           
+  
+          this.calificacion = new Calificacion();
 
-  this.califis = calificaciones;
- }
-
- getCalifi(){
-
-  return this.califis;
- }
+          this.calificacion.set(item);
+        
+        
+          this.calificacion$.next(this.calificacion);
+        });
+ 
+  
+     } )
+     
+     
+     );
+ 
+     
+  
+  }
+ 
+ 
+ 
+  
+ 
 
  
  create(calificacion: Calificacion){

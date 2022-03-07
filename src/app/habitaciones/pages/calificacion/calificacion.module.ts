@@ -8,7 +8,8 @@ import { CalificacionPageRoutingModule } from './calificacion-routing.module';
 
 import { CalificacionPage } from './calificacion.page';
 import { CalificarComponent } from '../../components/calificar/calificar.component';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component
     FormsModule,
     IonicModule,
     CalificacionPageRoutingModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    SharedModule
   ],
-  declarations: [CalificacionPage,CalificarComponent, NavbarComponent ]
+  declarations: [CalificacionPage,CalificarComponent ]
 })
 export class CalificacionPageModule {}

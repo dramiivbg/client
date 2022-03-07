@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable, Subscription } from 'rxjs';
 import { Perfil } from '../model/perfil';
 import { User } from '../model/user';
+import { PerfilService } from '../services/perfil/perfil.service';
 import { UserService } from '../services/user/user.service';
 
 @Injectable({
@@ -18,8 +19,8 @@ export class AdminGuard implements CanActivate {
 
   public uid:string = '';
 
-  public userSubscripcion = new Subscription();
-  constructor(private userSvc: UserService,
+  public perfilSubscripcion = new Subscription();
+  constructor(private perfilService: PerfilService,
     private router: Router){
 
    
@@ -34,34 +35,33 @@ comprobarVendedor(){
 
   if(localStorage.getItem('id') != null){
   
-  this.userSubscripcion =   this.userSvc.get$().subscribe((res:User) => {
+  this.perfilSubscripcion =   this.perfilService.get$().subscribe((res:Perfil) => {
 
    this.perfil = new Perfil();
 
-   this.perfil.set(res['perfil']);
+   this.perfil.set(res);
 
 
 
+   if(this.perfil.rol == 'admin'){
+
+    this.active = true;
+
+   }else{
+    this.router.navigate(['']);
+   }
    
 
-    switch(this.perfil.rol){
-
-      case 'admin': this.active = true; break;
-
-      case 'user' : this.router.navigate(['/home']); break;
-
-      default: this.router.navigate(['/login']); break;
-
-
-      
-    }
+   
 
 
     });
 
     this.uid = localStorage.getItem('id');
 
-  this.userSvc.get(Number(this.uid)).subscribe(res => {
+    console.log(this.uid);
+
+  this.perfilService.get(Number(this.uid)).subscribe(res => {
     console.log('listo');
   });
 

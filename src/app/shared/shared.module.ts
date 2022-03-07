@@ -6,15 +6,16 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ListHabitacionComponent } from './list-habitacion/list-habitacion.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
 @NgModule({
-  declarations: [HotelComponent, ListHabitacionComponent],
+  declarations: [HotelComponent, ListHabitacionComponent, NavbarComponent],
   imports: [
    IonicModule, CommonModule, FormsModule,
    RouterModule
   ],
-  exports:[HotelComponent, ListHabitacionComponent]
+  exports:[HotelComponent, ListHabitacionComponent, NavbarComponent]
 })
 export class SharedModule { }

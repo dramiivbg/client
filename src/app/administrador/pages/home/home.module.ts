@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+
 
 
 
@@ -21,6 +21,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HomePageRoutingModule,
     SharedModule
   ],
-  declarations: [HomePage,NavbarComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

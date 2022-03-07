@@ -46,34 +46,27 @@ export class CalificarComponent implements OnInit {
 
   data.id_habitacion = this.id;
 
-  data.id_user = 1;
+  data.id_user = Number(localStorage.getItem('id'));
 
   this.fecha = new Date();
 
-  this.fech =   this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1) +'-'+(this.fecha.getDay()-1);
+  if((this.fecha.getMonth()+1) < 10){
+
+  this.fech =   this.fecha.getFullYear()+'-'+ '0'+(this.fecha.getMonth()+1) +'-'+(this.fecha.getDay()+7);
+
+  }else{
+
+    this.fech =   this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1) +'-'+(this.fecha.getDay()-1);
+
+  }
 
   data.fecha = this.fech;
   
 
 
- 
-  
-
-  
-
-  this.calificacionSubscripcion =  this.calificacionService.get$().subscribe((res: Calificacion) => {
-
-    if(res){
-
-      this.route.navigate(['/home'])
-
-    }
-    
-  });
-
   this.calificacionService.create(data).subscribe(res => {
 
-    console.log('listo');
+    this.route.navigate(['/home']);
 
   });
 

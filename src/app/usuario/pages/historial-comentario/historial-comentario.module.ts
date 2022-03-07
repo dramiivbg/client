@@ -8,15 +8,17 @@ import { HistorialComentarioPageRoutingModule } from './historial-comentario-rou
 
 import { HistorialComentarioPage } from './historial-comentario.page';
 import { ListHistorialComponent } from '../../components/list-historial/list-historial.component';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HistorialComentarioPageRoutingModule
+    HistorialComentarioPageRoutingModule,
+    SharedModule
   ],
-  declarations: [HistorialComentarioPage, ListHistorialComponent, NavbarComponent]
+  declarations: [HistorialComentarioPage, ListHistorialComponent]
 })
 export class HistorialComentarioPageModule {}

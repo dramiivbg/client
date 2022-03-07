@@ -18,6 +18,8 @@ export class ListComentariosComponent implements OnInit {
 
   @Input() calificaciones: Calificacion[] = [];
 
+  public estrellas: number[];
+
   public loading = false;
   
   constructor() { }
@@ -41,6 +43,8 @@ export class ListComentariosComponent implements OnInit {
     this.bolean = true;
    }
     
+
+ 
     
 
   }

@@ -8,7 +8,8 @@ import { CrearHabitacionPageRoutingModule } from './crear-habitacion-routing.mod
 
 import { CrearHabitacionPage } from './crear-habitacion.page';
 import { FormHabitacionComponent } from '../../components/form-habitacion/form-habitacion.component';
-import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { NavbarComponent } from 'src/app/home/components/navbar/navbar.component
     FormsModule,
     IonicModule,
     CrearHabitacionPageRoutingModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    SharedModule
   ],
-  declarations: [CrearHabitacionPage, FormHabitacionComponent,  NavbarComponent ]
+  declarations: [CrearHabitacionPage, FormHabitacionComponent ]
 })
 export class CrearHabitacionPageModule {}

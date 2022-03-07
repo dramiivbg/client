@@ -14,6 +14,8 @@ export class HomePage implements OnInit {
   
   public hoteles: Hotel[] = [];
   public loading = true;
+
+  public id : string;
    public userSubscripcion = new Subscription();
    
   
@@ -41,10 +43,10 @@ export class HomePage implements OnInit {
  
      
      
-    
+    this.id = localStorage.getItem('id');
        
      
-     this.hotelService.getAdmin(1).subscribe(res => {
+     this.hotelService.getAdmin(Number(this.id)).subscribe(res => {
  
        console.log('listo');
  
