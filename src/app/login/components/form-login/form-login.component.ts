@@ -68,7 +68,7 @@ export class FormLoginComponent implements OnInit {
           localStorage.setItem('id', String(res[index].id));
 
 
-          
+        
 
       
 
@@ -77,14 +77,17 @@ export class FormLoginComponent implements OnInit {
       this.perfil = new Perfil();
       
       this.perfil.set(res);
+
+      
      
-      if(res.rol == 'user'){
+      if(this.perfil.rol == 'user'){
 
 
-        this.router.navigate(['/home']); 
+        this.router.navigate(['']); 
 
-       }else{
+       }else if(this.perfil.rol == 'admin'){
 
+      
          this.router.navigate(['/admin']); 
 
        }
@@ -108,18 +111,6 @@ export class FormLoginComponent implements OnInit {
 
       
 
-         
-        }else{
-
-          Swal.fire({
-            title: 'credenciales incorrectas',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          });
          
         }
       

@@ -33,7 +33,7 @@ export class AdminGuard implements CanActivate {
 
 comprobarVendedor(){
 
-  if(localStorage.getItem('id') != null){
+  if(localStorage.getItem('id')){
   
   this.perfilSubscripcion =   this.perfilService.get$().subscribe((res:Perfil) => {
 

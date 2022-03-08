@@ -15,6 +15,15 @@
   </ion-header>
   <ion-content>
     <ion-list>
+
+    
+      <ion-item>
+        <ion-icon name="storefront"></ion-icon>&nbsp;
+        <a [routerLink]="['/admin']" routerLinkActive="router-link-active" > 
+        <ion-label>Home</ion-label>
+        </a>
+      </ion-item>
+
       <ion-item>
         <ion-icon name="business"></ion-icon>&nbsp;
        <a [routerLink]="['/crear-hotel']" routerLinkActive="router-link-active" > 
@@ -24,7 +33,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon name="person"></ion-icon>&nbsp;
+        <ion-icon name="home"></ion-icon>&nbsp;
        <a [routerLink]="['/tables']" routerLinkActive="router-link-active" > 
         <ion-label>lista de usuarios</ion-label>
 
@@ -32,17 +41,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon name="person"></ion-icon>&nbsp;
+        <ion-icon name="business"></ion-icon>&nbsp;
        <a [routerLink]="['/table-hotel']" routerLinkActive="router-link-active" > 
         <ion-label>lista de hoteles</ion-label>
-
-      </a>
-      </ion-item>
-
-      <ion-item>
-        <ion-icon name="person"></ion-icon>&nbsp;
-       <a [routerLink]="['/table-habitaciones']" routerLinkActive="router-link-active" > 
-        <ion-label>lista de habitaciones</ion-label>
 
       </a>
       </ion-item>
@@ -53,7 +54,7 @@
         <ion-label>crear habitacion</ion-label>
         </a>
       </ion-item>
-    </ion-list>
+ </ion-list>
   </ion-content>
 </ion-menu>
 
@@ -69,9 +70,7 @@
   </ion-header>
   <ion-content class="ion-padding">
     
-    
-    <app-hotel *ngFor="let hotel of hoteles" [hotel]="hotel" [loading]="loading"></app-hotel>
+<app-list-habitaciones></app-list-habitaciones>
 
   </ion-content>
 </div>
-

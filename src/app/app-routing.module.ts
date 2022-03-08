@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
-import { SharedModule } from './shared/shared.module';
+
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate:[UserGuard]
+  canActivate: [UserGuard]
   },
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+  
   },
   
   {
@@ -69,6 +70,19 @@ const routes: Routes = [
   {
     path: 'send',
     loadChildren: () => import('./usuario/pages/send/send.module').then( m => m.SendPageModule)
+  },
+
+  {
+    path: 'tables',
+    loadChildren: () => import('./administrador/pages/tables/tables.module').then( m => m.TablesPageModule)
+  },
+  {
+    path: 'table-hotel',
+    loadChildren: () => import('./administrador/pages/table-hotel/table-hotel.module').then( m => m.TableHotelPageModule)
+  },
+  {
+    path: 'table-habitaciones',
+    loadChildren: () => import('./administrador/pages/table-habitaciones/table-habitaciones.module').then( m => m.TableHabitacionesPageModule)
   },
   
 

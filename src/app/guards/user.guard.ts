@@ -27,7 +27,7 @@ export class UserGuard implements CanActivate {
 
    
 
-  this.comprobarVendedor();
+ this.comprobarVendedor();
 
   }
   
@@ -35,8 +35,12 @@ export class UserGuard implements CanActivate {
 
 comprobarVendedor(){
 
-  if(localStorage.getItem('id') != null){
   
+
+
+  if(localStorage.getItem('id')){
+  
+ 
   this.perfilSubscripcion =   this.perfilService.get$().subscribe((res:Perfil) => {
 
    this.perfil = new Perfil();
@@ -58,10 +62,15 @@ comprobarVendedor(){
 
     this.uid = localStorage.getItem('id');
 
-  this.perfilService.get(Number(this.uid)).subscribe(res => {
-    console.log('listo');
-  });
+    this.perfilService.get(Number(this.uid)).subscribe(res => {
+      console.log('listo');
+    });
 
+    this.uid = localStorage.getItem('id');
+
+    this.perfilService.get(Number(this.uid)).subscribe(res => {
+      console.log('listo');
+    });
 
   }
 
@@ -75,6 +84,10 @@ comprobarVendedor(){
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+
+    
+
     return this.active;
   }
   

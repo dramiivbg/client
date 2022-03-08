@@ -136,6 +136,39 @@ export class UserService {
    
  }
 
+ update(user: User){
+ 
+   
+ 
+   
+  return this.http.put<User>(this.url + '/usuario',user)
+   .pipe(
+     map((res: any) => {
+
+       
+
+       
+         this.usuario = new User();
+
+          
+
+       
+         this.usuario.set(res['data']);
+
+
+         this.usuario$.next(this.usuario);
+
+       
+     
+     }));
+
+  
+}
+
+
+
+
+
  delete(id: any){
 
   return this.http.delete<User>(this.url + '/usuario', id)
