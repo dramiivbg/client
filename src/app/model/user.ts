@@ -7,6 +7,8 @@ export class User {
     password: string;
     token?: string;
 
+    rol?: string;
+
 
     set( data: any ){
 

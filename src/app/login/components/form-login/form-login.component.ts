@@ -7,7 +7,7 @@ import * as crypto from 'crypto-js';
 import { Perfil } from 'src/app/model/perfil';
 import { Router } from '@angular/router';
 
-import Swal from 'sweetalert2'
+
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
 
 @Component({

@@ -93,19 +93,8 @@ export class UserService {
 
 
 
- 
 
  
- set(users: User[]){
-
-  this.users = users;
- }
- 
-
- getUsers(){
-
-  return this.users;
- }
  
  create(user: User){
  
@@ -171,7 +160,7 @@ export class UserService {
 
  delete(id: any){
 
-  return this.http.delete<User>(this.url + '/usuario', id)
+  return this.http.delete<User>(this.url + '/usuario/'+id)
      .pipe(
        map((res: any) => {
 

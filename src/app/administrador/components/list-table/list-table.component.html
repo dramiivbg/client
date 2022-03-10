@@ -1,3 +1,21 @@
-<p>
-  list-table works!
-</p>
+
+
+
+<ion-list  (click)="modal(user)" >
+
+  <ion-item >
+    <ion-avatar slot="start">
+      <ion-icon  name="person-circle"></ion-icon>
+    </ion-avatar>
+    <ion-label>
+      <h3> {{user.nombres+' '+ user.apellidos}} </h3>
+      <p>{{user.email}}<p>
+
+        <p>{{user.telefono}}</p>
+        <h3> {{user.rol}} </h3>
+    </ion-label>
+  </ion-item>
+
+  
+
+</ion-list>

@@ -81,6 +81,39 @@ export class PerfilService {
 
  
  
+ 
+ getRol(id: any): Observable<any>{
+ 
+  this.perfil = new Perfil();
+
+  return this.http.get<Perfil>(this.url + '/usuario/'+ id)
+   .pipe(
+     map((res: any) => {
+
+      res.data.perfil.forEach((item: any) => {
+ 
+        this.perfil = new Perfil();
+        this.perfil.set(item);
+       
+        this.perfil$.next(this.perfil);
+      });
+
+        
+
+     
+
+
+    }))
+
+   
+
+}
+
+
+
+
+
+
  create(perfil: Perfil){
  
    
@@ -98,6 +131,22 @@ export class PerfilService {
 
      }));
 }
+
+
+
+delete(id: any){
+
+  
+  return this.http.delete<Perfil>(this.url + '/perfil/'+ id)
+     .pipe(
+       map((res: any) => {
+
+         this.all();
+
+       })
+     )
+}
+
 
 
 }

@@ -72,7 +72,9 @@
   </ion-header>
   <ion-content class="ion-padding">
     
-<app-list-table></app-list-table>
+<app-list-table *ngFor="let user of users" [user]="user"></app-list-table>
 
   </ion-content>
 </div>
+
+

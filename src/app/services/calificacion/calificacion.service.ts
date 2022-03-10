@@ -137,5 +137,18 @@ export class CalificacionService {
    
     
  }
+
+ delete(id: any){
+
+  
+  return this.http.delete<Calificacion>(this.url + '/calificacion/'+ id)
+     .pipe(
+       map((res: any) => {
+
+         this.all();
+
+       })
+     )
+}
  
 }

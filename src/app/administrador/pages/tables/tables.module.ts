@@ -9,6 +9,7 @@ import { TablesPageRoutingModule } from './tables-routing.module';
 import { TablesPage } from './tables.page';
 import { ListTableComponent } from '../../components/list-table/list-table.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ModalOptionsComponent } from '../../components/modal-options/modal-options.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TablesPageRoutingModule,
     SharedModule
   ],
-  declarations: [TablesPage, ListTableComponent]
+  declarations: [TablesPage, ListTableComponent, ModalOptionsComponent],
+  
 })
 export class TablesPageModule {}

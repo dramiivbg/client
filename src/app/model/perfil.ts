@@ -6,6 +6,7 @@ export class Perfil {
 
     set(data: any){
 
+        this.id = data.id;
         this.id_user = data.id_user;
         this.rol = data.rol;
     }

@@ -1,6 +1,6 @@
 
 <div *ngIf="bolean">
-<img  src="assets/img/hotel.jpg" alt="hola" >
+<img  [src]="habitacion$.img" alt="hola" >
 
 
 <ion-button [routerLink]="['/calificacion', habitacion$.id]" routerLinkActive="router-link-active"  expand="block" >calificar </ion-button>
