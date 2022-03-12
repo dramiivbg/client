@@ -130,7 +130,7 @@ export class UserService {
    
  
    
-  return this.http.put<User>(this.url + '/usuario',user)
+  return this.http.put<User>(this.url + '/usuario/'+ user.id , user)
    .pipe(
      map((res: any) => {
 

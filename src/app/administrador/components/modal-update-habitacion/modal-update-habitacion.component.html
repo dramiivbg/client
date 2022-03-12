@@ -1,0 +1,140 @@
+
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+    
+      
+      <ion-toolbar class="navigate">
+       
+      
+      </ion-toolbar>
+      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+
+      <ion-item>
+        <ion-icon name="storefront"></ion-icon>&nbsp;
+        <a [routerLink]="['/admin']" routerLinkActive="router-link-active" > 
+        <ion-label>Home</ion-label>
+        </a>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="business"></ion-icon>&nbsp;
+       <a [routerLink]="['/crear-hotel']" routerLinkActive="router-link-active" > 
+        <ion-label>crear hotel</ion-label>
+
+      </a>
+      </ion-item>
+  
+     
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <app-navbar></app-navbar>
+      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    
+    
+  
+  
+<div novalidate [formGroup]="form"   #f="ngForm">
+    
+
+  
+    <ion-item>
+      
+      <ion-input formControlName="nombre" placeholder="nombre del hotel"></ion-input>
+    
+    
+    </ion-item>
+  
+    <div *ngIf="form.controls['nombre'].errors">
+      <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
+      <ion-text *ngIf="form.controls['nombre'].errors['minLength']" color="danger">*campo numerico</ion-text>
+    
+    
+    </div>
+    
+    
+    <ion-item>
+    
+      <ion-input type="number" formControlName="valor" placeholder="valor de la habitacion"></ion-input>
+     
+    
+    </ion-item>
+    <div *ngIf="form.controls['valor'].errors">
+      <ion-text *ngIf="form.controls['valor'].errors['required']" color="danger">*Campo requerido</ion-text>
+      <ion-text *ngIf="form.controls['valor'].errors['pattern']" color="danger">*campo numerico</ion-text>
+    
+    
+    </div>
+    
+    <ion-item>
+  
+  
+      <ion-textarea  formControlName="descripcion" placeholder="describa  la habitacion">
+  
+  
+      </ion-textarea>
+    </ion-item>
+  
+    
+    <div *ngIf="form.controls['descripcion'].errors" >
+      <ion-text *ngIf="form.controls['descripcion'].errors['required']" color="danger">*Campo requerido</ion-text>
+      <ion-text *ngIf="form.controls['descripcion'].errors['minlength']" color="danger">*Debe tener almenos 50 letras</ion-text>
+    
+    
+    </div>
+    
+    
+    <ion-item>
+      <div class="container-input-file">
+        <label class="custom-file">
+            <input formControlName="img"  type="file"  (change)="handleImage($event)"/>
+            <ion-icon name="cloud-upload-outline" ></ion-icon>&nbsp; <span>CHOOSE IMAGE</span>
+        </label>
+    </div>&nbsp;&nbsp;
+    
+    <div *ngIf="form.controls['img'].errors">
+      <ion-text *ngIf="form.controls['img'].errors['required']" color="danger">*Campo requerido</ion-text>
+    
+    
+    </div>
+    
+    <div *ngIf="previsualizacion">
+    
+      <img width="100px" [src]="previsualizacion" alt="">
+    
+    </div>
+    
+    </ion-item>
+    
+    
+    
+    
+      <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="update(form.value)">save</ion-button>
+    
+    
+     
+    
+    
+    </div>
+  
+  
+    
+  
+ 
+  </ion-content>
+</div>

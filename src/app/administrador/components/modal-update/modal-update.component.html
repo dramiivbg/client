@@ -1,0 +1,115 @@
+
+
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>update user</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content [fullscreen]="true">
+  
+    <ion-card style="text-align: center;">
+  
+      <ion-card-content>
+  
+   
+<div novalidate [formGroup]="form"    #f="ngForm" >
+    
+
+    
+  <ion-item>
+
+    <ion-input formControlName="nombres" placeholder="Ingrese sus nombres"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['nombres'].errors" >
+    <ion-text *ngIf="form.controls['nombres'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+
+  <ion-item>
+  
+    <ion-input formControlName="apellidos" placeholder="Ingrese sus apellidos"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['apellidos'].errors" >
+    <ion-text *ngIf="form.controls['apellidos'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+    
+
+ 
+
+  <ion-item>
+
+   
+    <ion-input  formControlName="telefono" placeholder="Ingrese su numero telefonico"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['telefono'].errors" >
+    <ion-text *ngIf="form.controls['telefono'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['telefono'].errors['minLength']" color="danger">*ingrese por lo menos 10 digitos</ion-text>
+   
+
+  
+  </div>
+
+ 
+
+  <ion-item>
+    <ion-icon name="person-outline"></ion-icon>
+    <ion-input formControlName="email" placeholder="gmail"></ion-input>
+  </ion-item>
+  
+  <div *ngIf="form.controls['email'].errors" >
+    <ion-text *ngIf="form.controls['email'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['email'].errors['email']" color="danger">*Ingresa correo electronico</ion-text>
+
+  
+  </div>
+
+  <ion-item>
+
+  <ion-select formControlName="rol">
+
+
+    <ion-select-option  value="admin">admin</ion-select-option>
+    <ion-select-option  value="user">user</ion-select-option>
+  </ion-select>
+
+</ion-item>
+
+   
+  <div *ngIf="form.controls['rol'].errors" >
+    <ion-text *ngIf="form.controls['rol'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+
+  
+  </div>
+
+  
+    
+  <section>
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="update(form.value)">create</ion-button>
+  </section>
+
+
+  
+  
+  
+  </div>
+  
+      </ion-card-content>
+    
+  
+    </ion-card>
+  </ion-content>
+  

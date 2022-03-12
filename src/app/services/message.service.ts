@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Habitacion } from '../model/habitacion';
 import { User } from '../model/user';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { User } from '../model/user';
 export class MessageService {
 
   public user: User;
+
+  public habitacion: Habitacion;
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +32,16 @@ export class MessageService {
 
     return this.user;
     
+  }
+
+  setHabitacion(habitacion: Habitacion){
+
+    this.habitacion = habitacion;
+  }
+
+  getHabitacion(){
+
+    return this.habitacion;
+
   }
 }

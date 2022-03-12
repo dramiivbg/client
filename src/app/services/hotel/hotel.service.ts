@@ -173,5 +173,17 @@ getAdmin(id: any): Observable<any>{
 }
 
 
+delete(id: any){
+
+  
+  return this.http.delete<Hotel>(this.url + '/hotel/'+ id)
+     .pipe(
+       map((res: any) => {
+
+         this.all();
+
+       })
+     )
+}
 
 }

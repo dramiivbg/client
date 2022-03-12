@@ -70,7 +70,7 @@
   </ion-header>
   <ion-content class="ion-padding">
     
-<app-list-habitaciones></app-list-habitaciones>
+<app-list-habitaciones *ngFor="let habitacion$ of habitaciones" [habitacion]="habitacion$"></app-list-habitaciones>
 
   </ion-content>
 </div>

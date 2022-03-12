@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Habitacion } from 'src/app/model/habitacion';
+import { MessageService } from 'src/app/services/message.service';
+import { ModalOptionHabitacionComponent } from '../modal-option-habitacion/modal-option-habitacion.component';
 
 @Component({
   selector: 'app-list-habitaciones',
@@ -7,8 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListHabitacionesComponent implements OnInit {
 
-  constructor() { }
+  @Input() habitacion: Habitacion;
 
-  ngOnInit() {}
 
+  constructor(public modalController: ModalController, public messageService: MessageService) { }
+
+  ngOnInit() {
+
+    
+  }
+
+
+ async modal(habitacion: Habitacion){
+
+    this.messageService.setHabitacion(habitacion);
+
+
+    const modal = await this.modalController.create({
+  component: ModalOptionHabitacionComponent,
+  cssClass: 'my-custom-class',
+ 
+});
+return await modal.present();
+  }
 }

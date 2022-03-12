@@ -66,7 +66,7 @@ export class CalificarComponent implements OnInit {
 
   this.calificacionService.create(data).subscribe(res => {
 
-    this.route.navigate(['/home']);
+    this.route.navigate(['']);
 
   });
 

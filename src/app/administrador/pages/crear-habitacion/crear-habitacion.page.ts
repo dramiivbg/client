@@ -14,6 +14,7 @@ export class CrearHabitacionPage implements OnInit {
 
   public hoteles: Hotel[] = [];
 
+  public id: string;
   public hotelSubcripcion = new Subscription();
 
   constructor(public hotelService: HotelService) { }
@@ -26,8 +27,9 @@ export class CrearHabitacionPage implements OnInit {
 
     });
 
+    this.id = localStorage.getItem('id');
 
-    this.hotelService.getAdmin(1).subscribe(res => {
+    this.hotelService.getAdmin(Number(this.id)).subscribe(res => {
 
       console.log('listo');
 

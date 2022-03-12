@@ -48,11 +48,13 @@ const routes: Routes = [
   },
   {
     path: 'calificacion/:id',
-    loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule)
+    loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule),
+    canActivate:[UserGuard]
   },
   {
     path: 'comentarios/:id',
-    loadChildren: () => import('./habitaciones/pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule)
+    loadChildren: () => import('./habitaciones/pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule),
+  
   },
   {
     path: 'change-password',
@@ -82,7 +84,8 @@ const routes: Routes = [
   },
   {
     path: 'table-habitaciones',
-    loadChildren: () => import('./administrador/pages/table-habitaciones/table-habitaciones.module').then( m => m.TableHabitacionesPageModule)
+    loadChildren: () => import('./administrador/pages/table-habitaciones/table-habitaciones.module').then( m => m.TableHabitacionesPageModule),
+    canActivate:[AdminGuard]
   },
   
 

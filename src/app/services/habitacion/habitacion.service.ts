@@ -121,6 +121,19 @@ export class HabitacionService {
   this.uploadImage(habitacion,image);
   }
 
+  public preAddAndUpdate1(habitacion: Habitacion, image:File){
+
+    if(image == undefined){
+   
+      this.update(habitacion)
+    }else{
+
+      this.uploadImage1(habitacion,image);
+    }
+
+
+    }
+
 
   private  uploadImage(habitacion:Habitacion,image:File){
     this.filePath = `images/${image.name}`;
@@ -145,6 +158,30 @@ export class HabitacionService {
     }
 
 
+
+    private  uploadImage1(habitacion:Habitacion,image:File){
+      this.filePath = `images/${image.name}`;
+       const fileRef = this.storage.ref(this.filePath);
+       const task = this.storage.upload(this.filePath, image);
+       task.snapshotChanges()
+       .pipe(
+         finalize(() =>{
+           fileRef.getDownloadURL().subscribe( urlImage => {
+           habitacion.img = urlImage;
+  
+          
+  
+            this.update(habitacion);
+    
+           //call addPost()
+    
+    
+           });
+         })
+       ).subscribe();
+      }
+  
+  
 
 
  
@@ -181,4 +218,52 @@ export class HabitacionService {
       });
     
  }
+
+ private update(habitacion: Habitacion){
+ 
+   
+ 
+   
+  return this.http.put<Habitacion>(this.url + '/habitacion/'+ habitacion.id , habitacion)
+   .pipe(
+     map((res: any) => {
+
+       
+
+       
+         this.habitacion = new Habitacion();
+
+          
+
+       
+         this.habitacion.set(res['data']);
+
+
+         this.habitacion$.next(this.habitacion);
+
+       
+     
+     })).subscribe();
+    
+   
+  
+}
+
+
+
+
+
+
+ delete(id: any){
+
+  
+  return this.http.delete<Habitacion>(this.url + '/habitacion/'+ id)
+     .pipe(
+       map((res: any) => {
+
+         this.all();
+
+       })
+     )
+}
 }
