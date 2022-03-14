@@ -23,6 +23,7 @@ export class ModalOptionHabitacionComponent implements OnInit {
 
   public HabitacionSubscripcion = new Subscription();
 
+  public calificaciones: Calificacion[] = [];
 
   constructor(public messageService: MessageService, public habitacionService: HabitacionService, public calificacionService: CalificacionService,
     public modalController: ModalController ) { }
@@ -42,16 +43,37 @@ export class ModalOptionHabitacionComponent implements OnInit {
 
   delet(){
 
-    this.calificacionSubscripcion = this.calificacionService.get$().subscribe((res: Calificacion) => {
 
-      this.calificacionService.delete(res.id).subscribe();
+    Swal.fire({
+      title: 'aceptas?',
+      text: "para borrar la habitacion debemos borrar todas sus calificaciones",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+
+
+        this.calificacionSubscripcion = this.calificacionService.get$().subscribe((res: Calificacion) => {
+
+         
     
-    });
+          
+    
+    
+          this.calificacionService.delete(res.id).subscribe();
+        
+        });
+    
+        this.calificacionService.get(this.habitacion.id).subscribe();
 
-    this.calificacionService.get(this.habitacion.id).subscribe();
 
 
-
+        
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -67,12 +89,13 @@ export class ModalOptionHabitacionComponent implements OnInit {
 
 
 
+
 this.habitacionService.delete(this.habitacion.id).subscribe( () => {
 
    
   Swal.fire(
     'Deleted!',
-    'Your user has been deleted.',
+    'Your bedroom has been deleted.',
     'success'
   );
 
@@ -84,6 +107,27 @@ this.habitacionService.delete(this.habitacion.id).subscribe( () => {
 
 
 
+
+    
+  }
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  }else if(result.isDismissed){
+
+    return;
 
     
   }

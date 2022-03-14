@@ -1,0 +1,69 @@
+
+<div novalidate [formGroup]="form"   #f="ngForm">
+    
+
+
+  <ion-item>
+    
+    <ion-input formControlName="nombre" placeholder="nombre del hotel"></ion-input>
+  
+  
+  </ion-item>
+  
+  <div *ngIf="form.controls['nombre'].errors" >
+    <ion-text *ngIf="form.controls['nombre'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['nombre'].errors['minLength']" color="danger">*Debe tener almenos 3 letras</ion-text>
+  
+  
+  </div>
+  
+  
+  <ion-item>
+  
+    <ion-input formControlName="direccion" placeholder="direccion del hotel"></ion-input>
+   
+  
+  </ion-item>
+  <div *ngIf="form.controls['direccion'].errors">
+    <ion-text *ngIf="form.controls['direccion'].errors['required']" color="danger">*Campo requerido</ion-text>
+    <ion-text *ngIf="form.controls['direccion'].errors['minlength']" color="danger">*Debe tener almenos 10 letras</ion-text>
+  
+  
+  </div>
+  
+  
+  
+  <ion-item>
+    <div class="container-input-file">
+      <label class="custom-file">
+          <input formControlName="img"  type="file"  (change)="handleImage($event)"/>
+          <ion-icon name="cloud-upload-outline" ></ion-icon>&nbsp; <span>CHOOSE IMAGE</span>
+      </label>
+  </div>&nbsp;&nbsp;
+  
+  <div *ngIf="form.controls['img'].errors">
+    <ion-text *ngIf="form.controls['img'].errors['required']" color="danger">*Campo requerido</ion-text>
+  
+  
+  </div>
+  
+  <div *ngIf="previsualizacion">
+  
+    <img width="100px" [src]="previsualizacion" alt="">
+  
+  </div>
+  
+  </ion-item>
+  
+  
+  
+  
+   
+    <ion-button expand="block" [disabled]="f.invalid" class="mat-flat-button"  (click)="update(form.value)">create</ion-button>
+  
+  
+  </div>
+  
+  
+  
+  

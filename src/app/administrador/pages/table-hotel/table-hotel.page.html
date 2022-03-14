@@ -70,7 +70,7 @@
   </ion-header>
   <ion-content class="ion-padding">
     
-<app-list-hotel></app-list-hotel>
+<app-list-hotel *ngFor="let hotel of hoteles" [hotel$]="hotel"></app-list-hotel>
 
   </ion-content>
 </div>

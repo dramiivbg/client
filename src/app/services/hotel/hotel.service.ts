@@ -123,6 +123,20 @@ getAdmin(id: any): Observable<any>{
     }
 
 
+    public preAddAndUpdate1(hotel: Hotel,image:File){
+
+      if(image == undefined){
+     
+        this.update(hotel)
+      }else{
+  
+        this.uploadImage1(hotel,image);
+      }
+  
+  
+      }
+
+
     private  uploadImage(hotel:Hotel,image:File){
       this.filePath = `images/${image.name}`;
        const fileRef = this.storage.ref(this.filePath);
@@ -144,6 +158,70 @@ getAdmin(id: any): Observable<any>{
          })
        ).subscribe();
       }
+
+
+
+
+      
+    private  uploadImage1(hotel:Hotel,image:File){
+      this.filePath = `images/${image.name}`;
+       const fileRef = this.storage.ref(this.filePath);
+       const task = this.storage.upload(this.filePath, image);
+       task.snapshotChanges()
+       .pipe(
+         finalize(() =>{
+           fileRef.getDownloadURL().subscribe( urlImage => {
+           hotel.img = urlImage;
+
+          
+
+            this.update(hotel);
+    
+           //call addPost()
+    
+    
+           });
+         })
+       ).subscribe();
+      }
+
+
+
+ private update(hotel: Hotel){
+ 
+   
+ 
+   
+  return this.http.put<Hotel>(this.url + '/hotel/'+ hotel.id , hotel)
+   .pipe(
+     map((res: any) => {
+
+       
+
+       
+         this.hotel = new Hotel();
+
+          
+
+       
+         this.hotel.set(res['data']);
+
+
+         this.hotel$.next(this.hotel);
+
+       
+     
+     })).subscribe();
+    
+   
+  
+}
+
+
+
+
+
+
 
 
 

@@ -2,54 +2,49 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Calificacion } from 'src/app/model/calificacion';
-import { Habitacion } from 'src/app/model/habitacion';
-import { HabitacionService } from 'src/app/services/habitacion/habitacion.service';
+import { Hotel } from 'src/app/model/hotel';
+import { HotelService } from 'src/app/services/hotel/hotel.service';
 import { MessageService } from 'src/app/services/message.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-modal-update-habitacion',
-  templateUrl: './modal-update-habitacion.component.html',
-  styleUrls: ['./modal-update-habitacion.component.scss'],
+  selector: 'app-modal-update-hotel',
+  templateUrl: './modal-update-hotel.component.html',
+  styleUrls: ['./modal-update-hotel.component.scss'],
 })
-export class ModalUpdateHabitacionComponent implements OnInit {
+export class ModalUpdateHotelComponent implements OnInit {
 
   public form: FormGroup;
   private image:any;
+
+  public hotel: Hotel;
+
   public previsualizacion: string;
-
-  public habitacion: Habitacion;
-
-  public calificaciones: Calificacion[] = [];
-
-  public habitacionSubscripcion = new Subscription();
-
-
-  constructor(private sanitizer: DomSanitizer, public habitacionService: HabitacionService,
-     public messageService: MessageService, public router: Router) { }
+  constructor(private sanitizer: DomSanitizer, public hotelService: HotelService, public messageService: MessageService,
+    public router: Router) { }
 
   ngOnInit() {
 
+    this.hotel = new Hotel();
 
-    this.habitacion = new Habitacion();
 
-    this.habitacion = this.messageService.getHabitacion();
+    this.hotel = this.messageService.getHotel();
 
-    
+
 
     this.form = new FormGroup({
 
-      img : new  FormControl(this.habitacion.img, [Validators.required]),
-      valor : new  FormControl(this.habitacion.valor, [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]),
-      descripcion: new FormControl(this.habitacion.descripcion, [Validators.required, Validators.minLength(50)]),
-      nombre : new  FormControl(this.habitacion.nombre, [Validators.required, Validators.minLength(3)]),
-     
+      img : new  FormControl(this.hotel.img, [Validators.required]),
+      direccion : new  FormControl(this.hotel.direccion, [Validators.required, Validators.minLength(10)]),
+
+      nombre : new  FormControl(this.hotel.nombre, [Validators.required, Validators.minLength(3)]),
+      
 
     });
- 
+
+    
   }
+
 
   handleImage(event:any): void{
  
@@ -92,10 +87,12 @@ export class ModalUpdateHabitacionComponent implements OnInit {
   }); 
 
 
+  update(data: Hotel){
 
-  update(data: Habitacion){
 
 
+    console.log(data);
+    
     Swal.fire({
       title: 'Do you want to save the changes?',
     showDenyButton: true,
@@ -103,28 +100,26 @@ export class ModalUpdateHabitacionComponent implements OnInit {
     confirmButtonText: 'Save',
     denyButtonText: `Don't save`,
   }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
+    
     if (result.isConfirmed) {
 
     
-      data.id_hotel = this.habitacion.id_hotel;
-      data.id = this.habitacion.id;
+      data.id = this.hotel.id;
+      data.id_admin = this.hotel.id_admin;
 
 
-     
+  
 
-  this.habitacionService.preAddAndUpdate1(data,this.image);
+  this.hotelService.preAddAndUpdate1(data,this.image);
           
         Swal.fire('Saved!', '', 'success').then(() => {
 
-          this.router.navigate(['/tables']);
+          this.router.navigate(['/admin']);
         }
       
         )
 
-      
-    
-        
+          
     
     
 
@@ -136,7 +131,6 @@ export class ModalUpdateHabitacionComponent implements OnInit {
 
 
 
+
   }
-
-
 }

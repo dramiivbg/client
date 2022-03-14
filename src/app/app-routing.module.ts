@@ -49,7 +49,7 @@ const routes: Routes = [
   {
     path: 'calificacion/:id',
     loadChildren: () => import('./habitaciones/pages/calificacion/calificacion.module').then( m => m.CalificacionPageModule),
-    canActivate:[UserGuard]
+    
   },
   {
     path: 'comentarios/:id',

@@ -1,13 +1,13 @@
 
-<ion-list  >
+<ion-list  (click)="modal(hotel$)" >
 
   <ion-item>
     <ion-avatar slot="start">
-      <ion-icon name="person-circle"></ion-icon>
+     <img [src]="hotel$.img" alt="">
     </ion-avatar>
     <ion-label>
-      <h3>  </h3>
-      <p><p>
+      <h3> {{hotel$.nombre}} </h3>
+      <p>{{hotel$.direccion}}<p>
 
         <p></p>
     </ion-label>
